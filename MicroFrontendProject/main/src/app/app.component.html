@@ -1,2 +1,319 @@
 <main-primary-nav></main-primary-nav>
 <router-outlet></router-outlet>
+
+    <!-- <nav class="navbar" style="width: 100%">
+        <div>
+            <div class="col">
+                <img [src]="LogoIcon">
+            </div>
+            <div class="col">
+                <img [src]="LogoCompanyIcon">
+            </div>
+            <div class="col">
+                <img [src]="LogoCompany2Icon">
+            </div>
+        </div>
+        <div>
+            <img [src]="connected2">
+            <span class="pr-3">Клейнман</span>
+            <img [src]="HelpIcon24">
+            <img [src]="PasswordIcon">
+            <img [src]="SettingsIcon">
+            <img [src]="SupportIcon">
+            <button class="btn" (click)="Exit()">выход</button>
+        </div>
+    </nav> -->
+
+    <header-webcomp *axLazyElement="linkHeader"></header-webcomp>
+    <!-- <script[src]="linkHeader"></script> -->
+    <!-- <header-webcomp></header-webcomp> -->
+
+<div class="p-3">
+<div class="row">
+    <div class="col-2">
+        <div class="row">
+            <div style="width: 100%;height: 40vh; overflow-x:hidden; overflow-y:scroll; ">
+                <div class="row ml-3">
+                    <div class="col-"><img [src]="HomeIcon"></div>
+                    <div class="col"><h4 style="font-weight: bold"><a href="">Главная</a></h4></div>
+                </div>
+                <div class="row ml-3">
+                    <div class="col-"><img [src]="CalcIcon32"></div>
+                    <div class="col"><h4><a href="">Калькулятор</a></h4></div>
+                </div>
+                <div class="row ml-3">
+                    <div class="col-"><img [src]="PoliciesIcon32"></div>
+                    <div class="col"><h4><a href="">Договоры</a></h4></div>
+                </div>
+                <div class="row ml-3">
+                    <div class="col-"><img [src]="ClientsIcon"></div>
+                    <div class="col"><h4><a href="">Клиенты</a></h4></div>
+                </div>
+                <div class="row ml-3">
+                    <div class="col-"><img [src]="PoliciesSupportIcon32"></div>
+                    <div class="col"><h4><a href="">Сервисы</a></h4></div>
+                </div>
+                <div class="row ml-3">
+                    <div class="col-"><img [src]="PoliciesSupportIcon32"></div>
+                    <div class="col"><h4><a href="">Сервисы v2</a></h4></div>
+                </div>
+                <div class="row ml-3">
+                    <div class="col-"><img [src]="PaymentsIcon32"></div>
+                    <div class="col"><h4><a href="">Платежи</a></h4></div>
+                </div>
+                <div class="row ml-3">
+                    <div class="col-"><img [src]="AgentsRegistryIcon32"></div>
+                    <div class="col"><h4><a href="">Журнал</a></h4></div>
+                </div>
+                <div class="row ml-3">
+                    <div class="col-"><img [src]="bsoIcon32"></div>
+                    <div class="col"><h4><a href="">БСО</a></h4></div>
+                </div>
+                <div class="row ml-3">
+                    <div class="col-"><img [src]="TaskIcon32"></div>
+                    <div class="col"><h4><a href="">Задачи</a></h4></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <footer-webcomp *axLazyElement="linkFooter"></footer-webcomp>
+            <!-- <script[src]="linkFooter"></script> -->
+            <!-- <footer-webcomp></footer-webcomp> -->
+                <!-- <span class="card-text" style="font-size: 13px;">
+                ООО "Страховая Компания "Согласие"".<br>
+                Лицензия ЦБ РФ от 25.05.2015 СИ № 1307, СЛ №1307, ОС №1307-03, ОС №1307-04, ОС №1307-05<br>
+                <a href="http://www.soglasie.ru">http://www.soglasie.ru</a>
+            </span> -->
+        </div>
+    </div>
+    
+    <div class="col pl-5">
+        <div class="row">
+            <div class="col- pr-2">
+                <img [src]="HomeIcon">
+            </div>
+            <div class="col-2">
+                <div class="row"><h4>Главная</h4></div>
+                <div class="row">Выберите модуль для перехода</div>
+            </div>
+            <!-- <div class="col- pr-2 pl-2">
+                <img [src]="ClientsIcon">
+            </div> -->
+            <!-- <div class="col-2">
+                <div class="row"><h3><a href="">Проверка лица</a></h3></div>
+            </div> -->
+        </div>
+        <div class="row mt-4">
+            <!-- первая колонка в начале -->
+            <!-- <div class="col-3">
+                <div class="row mb-5">
+                    <div class="col- pr-3">
+                        <img [src]="CalcIcon64" >
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <h4>
+                                <a href="">Калькулятор</a>
+                                <img class="pl-2" [src]="HelpIcon16">
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <h6><a href="">Расчитать премию</a></h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col- pr-3">
+                        <img [src]="ClientsIcon64" >
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <h4>
+                                <a href="">Клиенты</a>
+                                <img class="pl-2" [src]="HelpIcon16">
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <h6><a href="">Поиск клиента...</a></h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col- pr-3">
+                        <img [src]="AgentsRegistryIcon64" >
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <h4>
+                                <a href="">Журнал</a>
+                                <img class="pl-2" [src]="HelpIcon16">
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <h6><a href="">Найти запись в Журнале</a></h6>
+                                <h6><a href="">Найти реестр/отчет/акт</a></h6>
+                                <h6><a href="">АВР по ДВОУ</a></h6>
+                                <h6>Создать реестр:</h6>
+                                <h6 class="ml-4"><a href="">Реестр ССД</a></h6>
+                                <h6 class="ml-4"><a href="">Реестр страховых премий</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col- pr-3">
+                        <img [src]="BSOIcon64" >
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <h4>
+                                <a href="">БСО</a>
+                                <img class="pl-2" [src]="HelpIcon16">
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <h6><a href="">Найти БСО</a></h6>
+                                <h6><a href="">Заключены, но не сданы</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col- pr-3">
+                        <img [src]="VideoIcon64" >
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <h4>
+                                <a href="">Справка</a>
+                                <img class="pl-2" [src]="HelpIcon16">
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <div>
+                                    <h6><a href="">Обучающее видео</a></h6>
+                                    <h6><a href="">Справка о программе</a></h6>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- вторая колонка в центре -->
+            <!-- <div class="col-3">
+                <div class="row mb-5">
+                    <div class="col- pr-3">
+                        <img [src]="PoliciesSupportIcon64" >
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <h4>
+                                <a href="">Сервисы</a>
+                                <img class="pl-2" [src]="HelpIcon16">
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <h6><a href="">Пролонгировать договор</a></h6>
+                                <h6><a href="">Внести изменения в договор</a></h6>
+                                <h6><a href="">Расторжения договора</a></h6>
+                                <h6><a href="">Прием очередных платежей</a></h6>
+                                <h6><a href="">Загрузка из Формулятора</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col- pr-3">
+                        <img [src]="PaymentsIcon54" >
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <h4>
+                                <a href="">Платежи</a>
+                                <img class="pl-2" [src]="HelpIcon16">
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <h6><a href="">POS-терминалы</a></h6>
+                                <h6><a href="">Счета</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col- pr-3">
+                        <img [src]="QueriesIcon64" >
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <h4>
+                                <a href="">Анд.заявки</a>
+                                <img class="pl-2" [src]="HelpIcon16">
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <h6><a href="">Новая заявка</a></h6>
+                                <h6><a href="">СОА</a></h6>
+                                <h6><a href="">СОА (новое)</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    -->
+            <!-- третья колонка в конце -->
+            <div class="col-3">
+                <div class="row mb-5">
+                    <div class="col- pr-3">
+                        <img [src]="PoliciesIcon64" >
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <h4>
+                                <a href="">Договоры</a>
+                                <img class="pl-2" [src]="HelpIcon16">
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <h6><a href="">Найти свой договор</a></h6>
+                                <h6>Оформить договор:</h6>
+                                <!-- <div style="height: 40vh; overflow-y:scroll"> -->
+                                        <!-- <h6 class="ml-4"><a href="">Осаго</a></h6> -->
+                                        <h6 class="ml-4"><a routerLink="/auto/contract">Каско ФЛ v2</a></h6>
+                                        <!-- <h6 class="ml-4"><a routerLink="/auto/contract">Каско ЮЛ</a></h6> -->
+                                        <!-- <h6 class="ml-4"><a href="">Зеленная карта</a></h6>
+                                        <h6 class="ml-4"><a href="">100 за 50</a></h6>
+                                        <h6 class="ml-4"><a href="">ГЭП</a></h6>
+                                        <h6 class="ml-4"><a href="">Дом Экспресс</a></h6>
+                                        <h6 class="ml-4"><a href="">Квартира Экспресс</a></h6>
+                                        <h6 class="ml-4"><a href="">Антиклещ ФЛ</a></h6>
+                                        <h6 class="ml-4"><a href="">Стиль безопасности</a></h6>
+                                        <h6 class="ml-4"><a href="">Бизнес-Конструктор</a></h6>
+                                        <h6 class="ml-4"><a href="">Школьная пора</a></h6>
+                                        <h6 class="ml-4"><a href="">Экспресс-Защита</a></h6>
+                                        <h6 class="ml-4"><a href="">Мультиспортсмен</a></h6>
+                                        <h6 class="ml-4"><a href="">Зеленый свет+</a></h6>
+                                        <h6 class="ml-4"><a href="">#каско_рассрочка</a></h6>
+                                        <h6 class="ml-4"><a href="">Мультиспортсмен+</a></h6>
+                                        <h6 class="ml-4"><a href="">ВАЗ-Ультра</a></h6>
+                                        <h6 class="ml-4"><a href="">ВАЗ-Лайт</a></h6>
+                                        <h6 class="ml-4"><a href="">ВАЗ-Профи</a></h6>
+                                        <h6 class="ml-4"><a href="">На время отпуска</a></h6>
+                                        <h6 class="ml-4"><a href="">КАСКосмова</a></h6>
+                                        <h6 class="ml-4"><a href="">Бизнес-Конструктор+</a></h6> -->
+                                <!-- </div> -->
+                                <!-- <h6 class="mt-3"><a href="">Пенсионное страхование</a></h6> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

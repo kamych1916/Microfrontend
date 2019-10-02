@@ -13,6 +13,11 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
+  linkFooter = assetUrl('http://localhost:3001')
+  linkHeader = assetUrl('http://localhost:3000')
+
+  logo = assetUrl('Logo.png')
+  logo_company = assetUrl('Logo_Company.png')
   title = 'auth';
 
   user: User = new User(); // данные от пользователя
@@ -26,8 +31,9 @@ export class AppComponent {
   submit(user: User){
       this.httpService.postData(user)
               .subscribe(
-                (data: User) => {this.receivedData=data; this.done=true; this.storage.set("token", this.receivedData.access_token)},
-                error => {if(error.status != 401){this.router.navigate(['/main'])}else{alert('неверный логин или пароль!')}},
+                (data: User) => {this.receivedData=data; this.done=true; this.storage.set("token", this.receivedData.access_token), this.router.navigate(['/main'])},
+                // error => {if(error.status != '401'){this.router.navigate(['/main'])}else{alert('неверный логин или пароль!')}},
+                error => alert('логин либо пароль неверны')
               );
   };
 }

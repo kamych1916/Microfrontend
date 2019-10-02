@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'autocontract ttt';
+  linkHeader = 'http://localhost:3004';
+  linkFooter = 'http://localhost:3005';
+
+  
+
 }
