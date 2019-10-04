@@ -118,18 +118,86 @@
                 <div class="card" style="width: 100%; border: 1px solid  #f5822c !important">
                     <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Страхователь</div>
                     <div class="card-body">
+                        <div class="box-card" #card>
+                            <el-button (click)="card.toggle2 = true" style="background-color: #f5822c; color: white">+ Найти/Добавить</el-button>
+                            <el-dialog [title]="'Поиск лица'" [(visible)]="card.toggle2">
+                                <span>
+                                    <el-button style="background-color: #f5822c; color: white" class="mb-3">Физическое лицо</el-button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <span>Фамилия (кириллицей)</span><br>
+                                            <input type="text" [(ngModel)]="user.Surname" class="form-control" aria-describedby="addon-wrapping"><br>
+                                            <span>Отчество (кириллицей)</span><br>
+                                            <input type="text" [(ngModel)]="user.Patronymic" class="form-control" aria-describedby="addon-wrapping"><br>
+                                            <span>ИНН (для Индивидуальных Предпринимателей)</span><br>
+                                            <input type="text" class="form-control" aria-describedby="addon-wrapping">
+                                        </div>
+                                        <div class="col">
+                                            <span>Имя (кириллицей)</span><br>
+                                            <input type="text" [(ngModel)]="user.Name" class="form-control" aria-describedby="addon-wrapping"><br>
+                                            <span>Дата рождения</span><br>
+                                            <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                        </div>
+                                    </div>
+                                    <div class="card mt-4">
+                                        <div class="card-header">Результат поиска</div>
+                                        <div class="card-body">
+                                            <input (click)="card.toggle2 = false; changeBtn()" [ngStyle]="{visibility: invisibleInp}" [(ngModel)]="Result" type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
+                                        </div>
+                                    </div>
+                                </span>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" (click)="OpenModal()">Small modal</button>
+                                <ng-template #footer>
+                                    <button class="el-button" [ngStyle]="{visibility: invisibleBtn}" style="background-color: #f5822c; color: white">Создать</button>
+                                    <el-button (click)="submit(user)" style="background-color: #f5822c; color: white">Найти</el-button>
+                                    <el-button (click)="card.toggle2 = false">Отменить</el-button>
+                                </ng-template>
+                            </el-dialog>
+                            <!-- <el-dialog  [title]="'Поиск лица'" [lock-scroll]="false" [(visible)]="card.toggle2">
+                                <div class="row">
+                                    <div class="col">
+                                        <span>Фамилия</span><br>
+                                        <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                        <span>Дата рождения</span><br>
+                                        <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                        <span>Контактное лицо</span><br>
+                                        <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                    </div>
+                                    <div class="col">
+                                        <span>Имя (кириллицей)</span><br>
+                                        <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>                                            </div>
+                                    <div class="col">
+                                        <span>Отчество</span><br>
+                                        <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>    
+                                    </div>
+                                    <div class="col">
+                                        <span>Пол</span><br>
+                                        <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                        <span>ИНН</span><br>
+                                        <input type="text" class="form-control" aria-describedby="addon-wrapping">
+                                    </div>
+                                </div>
+                                <span>Примечание</span><br>
+                                <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                <nav class="navbar navbar-light bg-light" style="border: 1px solid #aaa">
+                                    <span class="navbar-brand mb-0 h1">Контакты (0)</span>
+                                    <el-button style="background-color: #f5822c; color: white">+ Добавить</el-button>
+                                </nav><br>
+                                <nav class="navbar navbar-light bg-light" style="border: 1px solid #aaa">
+                                    <span class="navbar-brand mb-0 h1">Адреса</span>
+                                    <el-button style="background-color: #f5822c; color: white">+ Добавить</el-button>
+                                </nav><br>
+                                <nav class="navbar navbar-light bg-light" style="border: 1px solid #aaa">
+                                    <span class="navbar-brand mb-0 h1">Документы</span>
+                                    <el-button style="background-color: #f5822c; color: white">+ Добавить</el-button>
+                                </nav>
 
-                    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="myModal">
-                        <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                           <span>kek</span>
+                                <ng-template #footer>
+                                    <el-button style="background-color: #f5822c; color: white">Найти</el-button>
+                                    <el-button (click)="card.toggle2 = false">Отменить</el-button>
+                                </ng-template>
+                            </el-dialog> -->
                         </div>
-                        </div>
-                    </div>
-
-
                     </div>
                 </div>
             </div>
