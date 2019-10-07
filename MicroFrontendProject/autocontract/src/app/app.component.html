@@ -120,7 +120,8 @@
                     <div class="card-body">
                         <div class="box-card" #card>
                             <el-button (click)="card.toggle2 = true" style="background-color: #f5822c; color: white">+ Найти/Добавить</el-button>
-                            <el-dialog [title]="'Поиск лица'" [(visible)]="card.toggle2">
+                            <modal-webcomp *axLazyElement="linkModal" ></modal-webcomp>
+                            <!-- <el-dialog [title]="'Поиск лица'" [(visible)]="card.toggle2">
                                 <span>
                                     <el-button style="background-color: #f5822c; color: white" class="mb-3">Физическое лицо</el-button>
                                     <div class="row">
@@ -149,36 +150,36 @@
 
                                 <ng-template #footer>
                                     <button class="el-button" [ngStyle]="{visibility: invisibleBtn}" style="background-color: #f5822c; color: white">Создать</button>
-                                    <el-button (click)="submit(user)" style="background-color: #f5822c; color: white">Найти</el-button>
+                                    <el-button (click)="search(user)" style="background-color: #f5822c; color: white">Найти</el-button>
                                     <el-button (click)="card.toggle2 = false">Отменить</el-button>
                                 </ng-template>
-                            </el-dialog>
+                            </el-dialog> -->
                             <!-- <el-dialog  [title]="'Поиск лица'" [lock-scroll]="false" [(visible)]="card.toggle2">
                                 <div class="row">
                                     <div class="col">
                                         <span>Фамилия</span><br>
-                                        <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                        <input type="text" [(ngModel)]="user.Surname" class="form-control" aria-describedby="addon-wrapping"><br>
                                         <span>Дата рождения</span><br>
-                                        <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                        <input type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
                                         <span>Контактное лицо</span><br>
-                                        <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                        <input type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
                                     </div>
                                     <div class="col">
                                         <span>Имя (кириллицей)</span><br>
-                                        <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>                                            </div>
+                                        <input type="text" [(ngModel)]="user.Name" class="form-control" aria-describedby="addon-wrapping"><br>                                            </div>
                                     <div class="col">
                                         <span>Отчество</span><br>
-                                        <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>    
+                                        <input type="text" [(ngModel)]="user.Patronymic" class="form-control" aria-describedby="addon-wrapping"><br>    
                                     </div>
                                     <div class="col">
                                         <span>Пол</span><br>
-                                        <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                        <input type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
                                         <span>ИНН</span><br>
-                                        <input type="text" class="form-control" aria-describedby="addon-wrapping">
+                                        <input type="text" readonly class="form-control" aria-describedby="addon-wrapping">
                                     </div>
                                 </div>
                                 <span>Примечание</span><br>
-                                <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                <input type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
                                 <nav class="navbar navbar-light bg-light" style="border: 1px solid #aaa">
                                     <span class="navbar-brand mb-0 h1">Контакты (0)</span>
                                     <el-button style="background-color: #f5822c; color: white">+ Добавить</el-button>
@@ -193,7 +194,7 @@
                                 </nav>
 
                                 <ng-template #footer>
-                                    <el-button style="background-color: #f5822c; color: white">Найти</el-button>
+                                    <el-button (click)="register(user)" style="background-color: #f5822c; color: white">сохранить</el-button>
                                     <el-button (click)="card.toggle2 = false">Отменить</el-button>
                                 </ng-template>
                             </el-dialog> -->

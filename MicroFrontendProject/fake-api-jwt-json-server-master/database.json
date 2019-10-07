@@ -1,16 +1,1 @@
-{
-  "insuranceusers": [
-    {
-      "id": 1,
-      "name": "Ivan",
-      "surname": "Ivanov",
-      "patronymic": "Ivanovich "
-    },
-    {
-      "id": 2,
-      "name": "Fedor",
-      "surname": "Fedorov",
-      "patronymic": "Fedorovich "
-    }
-  ]
-}
+{"insuranceusers":[{"id":1,"name":"Ivan","surname":"Ivanov","patronymic":"Ivanovich "},{"id":2,"name":"Fedor","surname":"Fedorov","patronymic":"Fedorovich "}]}

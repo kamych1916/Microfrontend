@@ -1,0 +1,37 @@
+<!-- <div class="box-card" #card>
+    <el-button (click)="card.toggle2 = true" style="background-color: #f5822c; color: white">+ Найти/Добавить</el-button>
+    <el-dialog [title]="'Поиск лица'" [(visible)]="true">
+        <span>
+            <el-button style="background-color: #f5822c; color: white" class="mb-3">Физическое лицо</el-button>
+            <div class="row">
+                <div class="col">
+                    <span>Фамилия (кириллицей)</span><br>
+                    <input type="text" [(ngModel)]="user.Surname" class="form-control" aria-describedby="addon-wrapping"><br>
+                    <span>Отчество (кириллицей)</span><br>
+                    <input type="text" [(ngModel)]="user.Patronymic" class="form-control" aria-describedby="addon-wrapping"><br>
+                    <span>ИНН (для Индивидуальных Предпринимателей)</span><br>
+                    <input type="text" class="form-control" aria-describedby="addon-wrapping">
+                </div>
+                <div class="col">
+                    <span>Имя (кириллицей)</span><br>
+                    <input type="text" [(ngModel)]="user.Name" class="form-control" aria-describedby="addon-wrapping"><br>
+                    <span>Дата рождения</span><br>
+                    <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-header">Результат поиска</div>
+                <div class="card-body">
+                    <input (click)="card.toggle2 = false" [ngStyle]="{visibility: invisibleInp}" [(ngModel)]="Result" type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
+                </div>
+            </div>
+        </span>
+
+        <ng-template #footer>
+            <button class="el-button" [ngStyle]="{visibility: invisibleBtn}" style="background-color: #f5822c; color: white">Создать</button>
+            <el-button (click)="search(user)" style="background-color: #f5822c; color: white">Найти</el-button>
+            <el-button (click)="card.toggle2 = false">Отменить</el-button>
+        </ng-template>
+    </el-dialog>
+</div>
+ -->

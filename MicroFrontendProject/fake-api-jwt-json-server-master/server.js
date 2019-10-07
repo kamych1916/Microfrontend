@@ -35,91 +35,46 @@ function isUserExist({name, surname, patronymic}){
   return usersins.insuranceusers.findIndex(insuranceuser => insuranceuser.name === name && insuranceuser.surname === surname || insuranceuser.patronymic === patronymic) !== -1
 }
 
-// Register New User
-// server.post('/auth/register', (req, res) => {
-//   console.log("register endpoint called; request body:");
-//   console.log(req.body);
-//   const {email, password} = req.body;
+//Register New User
+server.post('/register/user', (req, res) => {
+  const {name, surname, patronymic} = req.body;
+  fs.readFile("./database.json", (err, data) => {  
+    if (err) {
+      const status = 401
+      const message = err
+      res.status(status).json({status, message})
+      return
+    };
 
-//   if(isAuthenticated({email, password}) === true) {
-//     const status = 401;
-//     const message = 'Email and Password already exist';
-//     res.status(status).json({status, message});
-//     return
-//   }
+    // Get current users data
+    var data = JSON.parse(data.toString());
+    
+    // console.log(data.insuranceusers)
 
-//   fs.readFile("./users.json", (err, data) => {  
-//       if (err) {
-//         const status = 401
-//         const message = err
-//         res.status(status).json({status, message})
-//         return
-//       };
+    // Get the id of last user
+    var last_item_id = data.insuranceusers[data.insuranceusers.length-1].id;
 
-//       // Get current users data
-//       var data = JSON.parse(data.toString());
-
-//       // Get the id of last user
-//       var last_item_id = data.users[data.users.length-1].id;
-
-//       //Add new user
-//       data.users.push({id: last_item_id + 1, email: email, password: password}); //add some data
-//       var writeData = fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  // WRITE
-//           if (err) {
-//             const status = 401
-//             const message = err
-//             res.status(status).json({status, message})
-//             return
-//           }
-//       });
-//   });
-
-// // Create token for new user
-//   const access_token = createToken({email, password})
-//   console.log("Access Token:" + access_token);
-//   res.status(200).json({access_token})
-// })
-
-// Login to one of the users from ./users.json
-server.post('/auth/login', (req, res) => {
-  console.log("login endpoint called; request body:");
-  console.log(req.body);
-  const {email, password} = req.body;
-  if (isAuthenticated({email, password}) === false) {
-    const status = 401
-    const message = 'Incorrect email or password'
-    res.status(status).json({status, message})
-    return
-  }
-  const access_token = createToken({email, password})
-  console.log("Access Token:" + access_token);
-  res.status(200).json({access_token})
+    //Add new user
+    if (data.insuranceusers.findIndex(insuranceuser => insuranceuser.name === name && insuranceuser.surname === surname) !== -1){
+      const status = 401
+      const message = "пользователь уже существует!"
+      res.status(status).json({status, message})
+      return
+    }else{
+      console.log("пользовтель добавлен!")
+      data.insuranceusers.push({id: last_item_id + 1, name: name, surname: surname, patronymic: patronymic}); //add some data
+    }
+    var writeData = fs.writeFile("./database.json", JSON.stringify(data), (err, result) => {  // WRITE
+      if (err) {
+        const status = 401
+        const message = err
+        res.status(status).json({status, message})
+        return
+      }
+    });
+  });
+  res.status(200)
 })
-
-// server.use(/^(?!\/auth).*$/,  (req, res, next) => {
-//   if (req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
-//     const status = 401
-//     const message = 'Error in authorization format'
-//     res.status(status).json({status, message})
-//     return
-//   }
-//   try {
-//     let verifyTokenResult;
-//      verifyTokenResult = verifyToken(req.headers.authorization.split(' ')[1]);
-
-//      if (verifyTokenResult instanceof Error) {
-//        const status = 401
-//        const message = 'Access token not provided'
-//        res.status(status).json({status, message})
-//        return
-//      }
-//      next()
-//   } catch (err) {
-//     const status = 401
-//     const message = 'Error access_token is revoked'
-//     res.status(status).json({status, message})
-//   }
-// })
 
 // server.use(router)
 server.post('/search/user', (req, res) => {

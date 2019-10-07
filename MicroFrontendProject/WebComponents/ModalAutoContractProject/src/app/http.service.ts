@@ -11,4 +11,8 @@ export class HttpService{
         const body = {name: user.Name, surname: user.Surname, patronymic: user.Patronymic};
         return this.http.post('http://localhost:8000/search/user', body); 
     }
+    postDataUser(user: User){
+        const body = {name: user.Name, surname: user.Surname, patronymic: user.Patronymic};
+        return this.http.post('http://localhost:8000/register/user', body);         
+    }
 }
