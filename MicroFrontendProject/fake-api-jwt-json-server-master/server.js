@@ -63,6 +63,9 @@ server.post('/register/user', (req, res) => {
     }else{
       console.log("пользовтель добавлен!")
       data.insuranceusers.push({id: last_item_id + 1, name: name, surname: surname, patronymic: patronymic}); //add some data
+      const FullNameRegister = name + " " + surname + " " + patronymic 
+      console.log(FullNameRegister)
+      res.status(200).json({FullNameRegister})
     }
     var writeData = fs.writeFile("./database.json", JSON.stringify(data), (err, result) => {  // WRITE
       if (err) {
@@ -73,6 +76,9 @@ server.post('/register/user', (req, res) => {
       }
     });
   });
+  // const FullNameRegister = name + " " + surname + " " + patronymic 
+  // console.log(FullNameRegister)
+  // .json({FullNameRegister})
   res.status(200)
 })
 

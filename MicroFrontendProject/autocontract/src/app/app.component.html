@@ -118,9 +118,9 @@
                 <div class="card" style="width: 100%; border: 1px solid  #f5822c !important">
                     <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Страхователь</div>
                     <div class="card-body">
-                        <div class="box-card" #card>
-                            <el-button (click)="card.toggle2 = true" style="background-color: #f5822c; color: white">+ Найти/Добавить</el-button>
-                            <modal-webcomp *axLazyElement="linkModal" ></modal-webcomp>
+                        <!-- <div class="box-card" #card> -->
+                            <!-- <el-button (click)="card.toggle2 = true" style="background-color: #f5822c; color: white">+ Найти/Добавить</el-button> -->
+                            <modal-webcomp *axLazyElement="linkModal"></modal-webcomp>
                             <!-- <el-dialog [title]="'Поиск лица'" [(visible)]="card.toggle2">
                                 <span>
                                     <el-button style="background-color: #f5822c; color: white" class="mb-3">Физическое лицо</el-button>
@@ -198,7 +198,7 @@
                                     <el-button (click)="card.toggle2 = false">Отменить</el-button>
                                 </ng-template>
                             </el-dialog> -->
-                        </div>
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>

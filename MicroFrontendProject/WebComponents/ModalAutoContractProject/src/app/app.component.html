@@ -1,6 +1,6 @@
-<!-- <div class="box-card" #card>
-    <el-button (click)="card.toggle2 = true" style="background-color: #f5822c; color: white">+ Найти/Добавить</el-button>
-    <el-dialog [title]="'Поиск лица'" [(visible)]="true">
+<div class="box-card" #card>
+    <input  class="btn" (click)="card.toggle = true" [ngStyle]="{display: visibilityMainBtn}" style="background-color: #f5822c; color: white" value="+ Найти/Добавить">
+    <el-dialog [title]="'Поиск лица'" [(visible)]="card.toggle">
         <span>
             <el-button style="background-color: #f5822c; color: white" class="mb-3">Физическое лицо</el-button>
             <div class="row">
@@ -22,16 +22,69 @@
             <div class="card mt-4">
                 <div class="card-header">Результат поиска</div>
                 <div class="card-body">
-                    <input (click)="card.toggle2 = false" [ngStyle]="{visibility: invisibleInp}" [(ngModel)]="Result" type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
+                    <input (click)="card.toggle = false; changeBtn()" [ngStyle]="{visibility: invisibleInp}" [(ngModel)]="Result" type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
                 </div>
             </div>
         </span>
 
         <ng-template #footer>
-            <button class="el-button" [ngStyle]="{visibility: invisibleBtn}" style="background-color: #f5822c; color: white">Создать</button>
+            <button (click)="changeBtn(); card.toggle = false; card.toggle2 = true" class="el-button" [ngStyle]="{visibility: invisibleBtn}" style="background-color: #f5822c; color: white">Создать</button>
             <el-button (click)="search(user)" style="background-color: #f5822c; color: white">Найти</el-button>
+            <el-button (click)="card.toggle = false">Отменить</el-button>
+        </ng-template>
+    </el-dialog>
+
+
+
+
+    <div class="row">
+        <input class="btn"  [ngStyle]="{display: visibilityMainBtnSnd1}" [(ngModel)]="Result" style="border: 1px solid #ccc">
+        <input class="btn"  [ngStyle]="{display: visibilityMainBtnSnd2}" [(ngModel)]="ResultRegister" style="border: 1px solid #ccc">        
+        <button class="btn" (click)="changeBtnInvers()" [ngStyle]="{display: visibilityMainBtnSnd3}" style="background-color: #f5822c; color: white" >Удалить</button>
+        <button class="btn" (click)="card.toggle2 = true" [ngStyle]="{display: visibilityMainBtnSnd3}" style="background-color: #f5822c; color: white" >Создать</button>
+    </div>
+    <el-dialog  [title]="'Создание физ. лица'" [lock-scroll]="false" [(visible)]="card.toggle2">
+        <div class="row">
+            <div class="col">
+                <span>Фамилия</span><br>
+                <input type="text" [(ngModel)]="user.Surname" class="form-control" aria-describedby="addon-wrapping"><br>
+                <span>Дата рождения</span><br>
+                <input type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
+                <span>Контактное лицо</span><br>
+                <input type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
+            </div>
+            <div class="col">
+                <span>Имя (кириллицей)</span><br>
+                <input type="text" [(ngModel)]="user.Name" class="form-control" aria-describedby="addon-wrapping"><br>                                            </div>
+            <div class="col">
+                <span>Отчество</span><br>
+                <input type="text" [(ngModel)]="user.Patronymic" class="form-control" aria-describedby="addon-wrapping"><br>    
+            </div>
+            <div class="col">
+                <span>Пол</span><br>
+                <input type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
+                <span>ИНН</span><br>
+                <input type="text" readonly class="form-control" aria-describedby="addon-wrapping">
+            </div>
+        </div>
+        <span>Примечание</span><br>
+        <input type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
+        <nav class="navbar navbar-light bg-light" style="border: 1px solid #aaa">
+            <span class="navbar-brand mb-0 h1">Контакты (0)</span>
+            <el-button style="background-color: #f5822c; color: white">+ Добавить</el-button>
+        </nav><br>
+        <nav class="navbar navbar-light bg-light" style="border: 1px solid #aaa">
+            <span class="navbar-brand mb-0 h1">Адреса</span>
+            <el-button style="background-color: #f5822c; color: white">+ Добавить</el-button>
+        </nav><br>
+        <nav class="navbar navbar-light bg-light" style="border: 1px solid #aaa">
+            <span class="navbar-brand mb-0 h1">Документы</span>
+            <el-button style="background-color: #f5822c; color: white">+ Добавить</el-button>
+        </nav>
+    
+        <ng-template #footer>
+            <el-button (click)="register(user); card.toggle2 = false; changeInp()" style="background-color: #f5822c; color: white">сохранить</el-button>
             <el-button (click)="card.toggle2 = false">Отменить</el-button>
         </ng-template>
     </el-dialog>
 </div>
- -->

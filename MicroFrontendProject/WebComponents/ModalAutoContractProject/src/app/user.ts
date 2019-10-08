@@ -3,4 +3,5 @@ export class User{
     Surname: string;
     Patronymic: string;
     FullName: string;
+    FullNameRegister: string;
 }
