@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { HttpService } from './http.service';
 import { User } from './user' 
 
@@ -23,6 +23,9 @@ export class AppComponent{
     this.visibilityMainBtn = "none"
     this.visibilityMainBtnSnd1 = "block"
     this.visibilityMainBtnSnd3 = "block"
+    console.log('childInputChild: ', this.Result);
+    const event = new CustomEvent('connect-for-search', { detail: this.Result });
+    window.dispatchEvent(event);
   }
   changeBtnInvers(){
     this.visibilityMainBtn = "block"
@@ -59,5 +62,18 @@ export class AppComponent{
               error => {alert('Такой пользователь уже существует!')}
             );
   };
+
+  // ngOnInit(){
+  //   window.addEventListener('this-text-for-connect', this.ParentCustomEventListenerFunction, true)
+  // }
+
+  // ParentCustomEventListenerFunction(event){
+  //   console.log("FromParentComp: ", event.detail); 
+  //   this.Result = event.detail
+  // }
+
+  // ngOnDestroy(): void {
+  //   window.removeEventListener('ParentChangeNameToCustomEvent', this.ParentCustomEventListenerFunction, true);
+  // }
 
 }
