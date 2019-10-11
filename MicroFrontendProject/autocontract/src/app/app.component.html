@@ -1,29 +1,7 @@
-<!-- <a routerLink="/main">
-  To Main from autocontract
-</a>
-
-
-<router-outlet></router-outlet> -->
-
-
-<!-- <header-webcomp *axLazyElement="linkHeader"></header-webcomp> -->
-<nav class="navbar" style="width: 100%">
-    <div>
-
-            <img [src]="LogoCompanyIcon">
-
-            <img [src]="LogoCompany2Icon">
-
-    </div>
-    <div>
-        <img src="connected2">
-        <span class="pr-3">Клейнман</span>
-        <img src="HelpIcon24">
-        <img src="PasswordIcon">
-        <img src="SettingsIcon">
-        <img src="SupportIcon">
-    </div>
-</nav>
+<div class="row">
+    <header-autocontract style="width: 98%" *axLazyElement="linkHeader"></header-autocontract>
+    <img width="24" style="margin: 19px 0 0 -12px" height="24" src="http://localhost:3000/icons/exit" (click)="Exit()">
+</div>
 <div class="p-3">
     <div class="row">
         
@@ -33,7 +11,7 @@
                 <div style="width: 100%;height: 40vh;">
                     <div class="row ml-3">
                         <div class="col-"><img [src]="BackIcon32"></div>
-                        <div class="col"><h4><a href="">Назад</a></h4></div>
+                        <div class="col"><h4><a href="" routerLink="/main">Назад</a></h4></div>
                     </div>
                     <div class="row ml-3">
                         <div class="col-"><img [src]="PolicyIcon32"></div>
@@ -46,37 +24,33 @@
                 </div>
             </div>
             <div class="row">
-                <!-- <footer-webcomp *axLazyElement="linkFooter"></footer-webcomp> -->
-                <span class="card-text" style="font-size: 13px;">
+                <footer-autocontract *axLazyElement="linkFooter"></footer-autocontract>
+                <!-- <span class="card-text" style="font-size: 13px;">
                     ООО "Страховая Компания "Согласие"".<br>
                     Лицензия ЦБ РФ от 25.05.2015 СИ № 1307, СЛ №1307, ОС №1307-03, ОС №1307-04, ОС №1307-05<br>
                     <a href="http://www.soglasie.ru">http://www.soglasie.ru</a>
-                </span>
+                </span> -->
             </div>
         </div>
 
         <div class="col pl-5 pr-5">
 
             <div class="row">
-                <div class="col- pr-2">
-                    <img [src]="CarIcon">
-                </div>
                 <div class="col-3">
                     <div class="row"><h4>Новый договор</h4></div>
                     <div class="row">КАСКО ФЛ. Предварительный</div>
-                    <div class="row">Не сохранен</div>
                 </div>
                 <div class="col- pr-2">
-                    <button (click)="save(contract)" type="button" class="btn btn-sm" style="background-color: rgba(0,0,0,.03)">сохранить</button>
+                    <button (click)="save(contract)" type="button" class="btn btn-sm" style="border: 1px solid #f5822c !important;color: #f5822c ;background-color: rgba(0,0,0,.03)">сохранить</button>
                 </div>
             </div>
 
             <div class="row mt-4">
                 <div class="card" style="width: 100%; border: 1px solid  #f5822c !important">
-                    <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Основные договоры</div>
+                    <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Основные продукты</div>
                     <div class="card-body">
-                        <a href="#" class="btn" style="border: 1px solid #f5822c !important;color:#f5822c !important;">Основные договоры</a>
-                        <a href="#" class="btn ml-3" style="border: 1px solid #f5822c !important;color:#f5822c !important;">Квартиры Экспресс</a>
+                        <a href="#" class="btn" style="border: 1px solid #f5822c !important;color:#f5822c !important;">Основной договор</a>
+                        <!-- <a href="#" class="btn ml-3" style="border: 1px solid #f5822c !important;color:#f5822c !important;">Квартиры Экспресс</a> -->
                     </div>
                 </div>
             </div>
@@ -88,7 +62,7 @@
                         <div class="row">
                             <div class="col-4">
                                 <span>Номер договора</span><br>
-                                <input [(ngModel)]="contract.nameContract" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                <input [(ngModel)]="contract.namecontract" value="{{paramDataContr}}" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
                                 <span>Дата и время начала действия</span><br>
                                 <input readonly type="text" class="form-control" aria-describedby="addon-wrapping"> 
                             </div>
@@ -131,7 +105,7 @@
                         <div class="row">
                             <div class="col-4">
                                 <span>Марка ТС</span><br>
-                                <input [(ngModel)]="contract.nameCar" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                <input [(ngModel)]="contract.namecar" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
                                 <span>Дата начала эксплуатации</span><br>
                                 <input readonly type="text" class="form-control" aria-describedby="addon-wrapping"><br>
                             </div>
@@ -139,7 +113,7 @@
                                 <span>Год выпуска</span><br>
                                 <input readonly type="text" class="form-control" aria-describedby="addon-wrapping" value=""><br>
                                 <span>Стоимость ТС (RUR)</span><br>
-                                <input [(ngModel)]="contract.costCar" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                                <input [(ngModel)]="contract.costcar" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
                             </div>
                         </div>
                     </div>

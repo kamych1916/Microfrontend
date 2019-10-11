@@ -10,11 +10,11 @@
       <span>Логин</span><br>
       <input type="text" [(ngModel)]="user.Login" style="width: 100%"><br>
       <span>Пароль</span><br>
-      <input type="text" [(ngModel)]="user.Password" style="width: 100%"><br>
+      <input type="password" [(ngModel)]="user.Password" style="width: 100%"><br>
       <button (click)="submit(user)" class="mt-2">Войти</button>
     </div>
   </div>
   
   <footer-webcomp *axLazyElement="linkFooter"></footer-webcomp>
 
-<div>
+<div> 

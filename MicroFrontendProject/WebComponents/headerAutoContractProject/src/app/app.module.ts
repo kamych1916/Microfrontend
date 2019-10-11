@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import {DoBootstrap, Injector, NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -15,18 +14,15 @@ import {createCustomElement} from '@angular/elements';
     FormsModule
   ],
   providers: [],
-  // bootstrap: [AppComponent],
   entryComponents: [
     AppComponent
   ]
 })
 export class AppModule implements DoBootstrap {
-  constructor(private injector: Injector) {
-
-  }
+  constructor(private injector: Injector) {}
 
   ngDoBootstrap() {
     const el = createCustomElement(AppComponent, { injector: this.injector });
-    customElements.define('header-webcomp', el);
+    customElements.define('header-autocontract', el);
   }
 }

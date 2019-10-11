@@ -1,19 +1,114 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+<div class="row">
+    <header-contracts style="width: 98%" *axLazyElement="linkHeader"></header-contracts>
+    <img width="24" style="margin: 46px 0 0 -12px" height="24" src="http://localhost:3000/icons/exit" (click)="Exit()">
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li><a routerLink="/auth">
-    To App 1 from contracts
-  </a>
-  </li>
-  <li>
-    <a routerLink="/main">
-      To navbar from app1
-    </a>
-  </li>
-</ul>
-<router-outlet></router-outlet>
+<div class="p-3">
+  <div class="row">
+    <div class="col-2">
+      <div class="row">
+          <div style="width: 100%;height: 40vh; overflow-x:hidden; overflow-y:scroll; ">
+              <div class="row ml-3">
+                  <div class="col-"><img [src]="HomeIcon"></div>
+                  <div class="col"><h4><a routerLink="/main">Главная</a></h4></div>
+              </div>
+              <div class="row ml-3">
+                  <div class="col-"><img [src]="CalcIcon32"></div>
+                  <div class="col"><h4><a href="">Калькулятор</a></h4></div>
+              </div>
+              <div class="row ml-3">
+                  <div class="col-"><img [src]="PoliciesIcon32"></div>
+                  <div class="col"><h4 style="font-weight: bold"><a href="">Договоры</a></h4></div>
+              </div>
+              <div class="row ml-3">
+                  <div class="col-"><img [src]="ClientsIcon"></div>
+                  <div class="col"><h4><a href="">Клиенты</a></h4></div>
+              </div>
+              <div class="row ml-3">
+                  <div class="col-"><img [src]="PoliciesSupportIcon32"></div>
+                  <div class="col"><h4><a href="">Сервисы</a></h4></div>
+              </div>
+              <div class="row ml-3">
+                  <div class="col-"><img [src]="PoliciesSupportIcon32"></div>
+                  <div class="col"><h4><a href="">Сервисы v2</a></h4></div>
+              </div>
+              <div class="row ml-3">
+                  <div class="col-"><img [src]="PaymentsIcon32"></div>
+                  <div class="col"><h4><a href="">Платежи</a></h4></div>
+              </div>
+              <div class="row ml-3">
+                  <div class="col-"><img [src]="AgentsRegistryIcon32"></div>
+                  <div class="col"><h4><a href="">Журнал</a></h4></div>
+              </div>
+              <div class="row ml-3">
+                  <div class="col-"><img [src]="bsoIcon32"></div>
+                  <div class="col"><h4><a href="">БСО</a></h4></div>
+              </div>
+              <div class="row ml-3">
+                  <div class="col-"><img [src]="TaskIcon32"></div>
+                  <div class="col"><h4><a href="">Задачи</a></h4></div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <footer-main *axLazyElement="linkFooter"></footer-main>
+      </div>
+    </div>
+
+    <div class="col pl-5 pr-5">
+        <div class="row">
+            <div class="col- pr-2">
+                <img [src]="PoliciesIcon32">
+            </div>
+            <div class="col-3">
+                <div class="row"><h4>Договоры</h4></div>
+                <div class="row">Работа с портфелем договоров</div>
+            </div>  
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <div class="row"><h4>Критерии поиска</h4></div>
+                <div class="row">Выберите критерии для поиска договоров. Требуется указать хотя бы один критерий</div>
+                <div class="row" style="height: 3px; background-color: #f5822c !important"></div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="card" style="width: 100%; border: 1px solid  #f5822c !important">
+                <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Поиск</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <span>Номер Договора</span><br>
+                            <input [(ngModel)]="contract.namecontract" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                        </div>
+                        <div class="col">
+                            <span>Страхователь</span><br>
+                            <input [(ngModel)]="contract.nameclient" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                        </div>    
+                    </div>
+                    <div class="row">
+                        <div class="btn ml-3" (click)="search(contract)" style="background-color: #f5822c; color: white">Найти</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="card" style="width: 100%; border: 1px solid  #f5822c !important">
+                <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Результат поиска</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <input (click)="postParamData()" [ngStyle]="{visibility: invisibleInp}" [(ngModel)]="Result" style="background-color: #f5822c; color: white" type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+  </div>
+</div>

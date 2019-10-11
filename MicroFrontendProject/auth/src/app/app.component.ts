@@ -13,12 +13,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  linkFooter = assetUrl('http://localhost:3001')
-  linkHeader = assetUrl('http://localhost:3000')
-
-  logo = assetUrl('Logo.png')
-  logo_company = assetUrl('Logo_Company.png')
-  title = 'auth';
+  linkFooter = 'http://localhost:3000/auth/footer'
+  linkHeader = 'http://localhost:3000/auth/header'
 
   user: User = new User(); // данные от пользователя
       

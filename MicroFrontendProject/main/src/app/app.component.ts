@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'
 import { Router } from '@angular/router';
 import { assetUrl } from 'src/single-spa/asset-url';
+
+import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'
 
 @Component({
   selector: 'main-root',
@@ -37,8 +38,8 @@ export class AppComponent {
   bsoIcon32 = assetUrl('bso_32.png')
   TaskIcon32 = assetUrl('Task_32.png')
 
-  linkHeader = 'http://localhost:3002'
-  linkFooter = 'http://localhost:3003'
+  linkHeader = 'http://localhost:3000/main/header'
+  linkFooter = 'http://localhost:3000/main/footer'
 
 
   title = 'main';

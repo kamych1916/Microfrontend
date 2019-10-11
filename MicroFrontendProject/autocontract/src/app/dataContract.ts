@@ -3,4 +3,5 @@ export class dataContract{
     nameclient: string;
     namecar: string;
     costcar: string;
+    statmess: string;
 }
