@@ -1,4 +1,4 @@
-import { Component, Input, Inject, OnInit, AfterContentInit,  OnDestroy, OnChanges, SimpleChanges, SimpleChange} from '@angular/core';
+import { Component, Input, Inject, OnInit, AfterContentInit,  OnDestroy, OnChanges, SimpleChanges, SimpleChange, HostListener} from '@angular/core';
 import { assetUrl } from 'src/single-spa/asset-url';
 import { HttpService } from './http.service';
 import { dataContract } from './dataContract'
@@ -18,12 +18,17 @@ export class AppComponent implements OnInit  {
   linkHeader = 'http://localhost:3000/autocontract/header';
   linkFooter = 'http://localhost:3000/autocontract/footer';
   linkModal  = 'http://localhost:3000/modal';
+  linkRider  = 'http://localhost:3000/rider';
   BackIcon32 = assetUrl('Back_32.png')
   PolicyIcon32 = assetUrl('Policy_32.png')
   PrintIcon32 = assetUrl('Print_32.png')
+
+  visibilityMainBtn = "none"
+  visibilityRiderBlock = "none"
+  visibilityContractBlock = "block"
   
-  nameClient: any
-  sub: any
+  nameClient: "kek"
+  sub: any  
   paramDataContr: any;
   paramDataClient: any;
   
@@ -42,36 +47,68 @@ export class AppComponent implements OnInit  {
       console.log(params['nclient'])
       this.paramDataClient = params['nclient']
     });
-    window.addEventListener('connect-for-search', this.customEventListenerFunction, true);
+
+    const self = this;
+    window.addEventListener('connect-for-search', (event) => {
+      this.customEventListenerFunction(self, event)
+    }, true);
   }
-  
-  customEventListenerFunction(event) {
-    this.nameClient = event.detail
+
+  customEventListenerFunction(self, event) {
+    self.nameClient = event.detail.scope.Result
+    // console.log("parentComp: ", self.nameClient)
   }
-  
+
   ngOnDestroy(): void {
     window.location.reload();
-    window.removeEventListener('changeNameToCustomEvent', this.customEventListenerFunction, true);
+    window.removeEventListener('changeNameToCustomEvent', (event) => {this.customEventListenerFunction}, true);
   }
-  
+
   contract: dataContract = new dataContract(); // данные от пользователя
-  
+
   receivedData: dataContract; // полученные данные
 
   done: boolean = false;
 
   save(contract: dataContract, ){
-    // contract.nameclient = this.nameClient
+    contract.nameclient = this.nameClient
     this.httpService.postDataContract(contract)
-            .subscribe(
-              (data: dataContract) => {this.receivedData=data; this.done=true, alert(this.receivedData.statmess)},
-              error => {alert('что-то пошло не так!')}
-            );
+        .subscribe(
+          (data: dataContract) => {this.receivedData=data; this.done=true, alert(this.receivedData.statmess)},
+          error => {alert('что-то пошло не так!')}
+        );
   };
 
   Exit(){
     this.storage.remove("token");
     this.router.navigate(['/auth'])
+  }
+
+  showRiderChekBox = false
+  showRiderButton(){
+    // const InnerNewElem = document.querySelector('#riderBlock')
+    if(this.showRiderChekBox == false){
+      this.visibilityMainBtn = "inline-block"
+      // this.visibilityRiderBlock = "block"
+      // this.visibilityContractBlock = "none"
+      this.showRiderChekBox = true
+      // const newElem = document.createElement('rider-webcomp') 
+      // newElem.setAttribute('*' + 'axLazyElement', "linkRider")
+      // // newElem[kek] = "linkRider"
+      // InnerNewElem.appendChild(newElem)
+    }else{
+      // InnerNewElem.innerHTML = ""
+      // this.visibilityMainBtn = "none" 
+      this.showRiderChekBox = false
+    }
+  }
+  showRider(){
+    this.visibilityContractBlock = "none"
+    this.visibilityRiderBlock = "block"
+  }
+  showContract(){
+    this.visibilityContractBlock = "block"
+    this.visibilityRiderBlock = "none"
   }
 }
 

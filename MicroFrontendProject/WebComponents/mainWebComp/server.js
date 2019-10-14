@@ -79,5 +79,10 @@ server.get('/auth/footer', (req,res) => {
 });
 // END OF ---- AUTH WEB -COMP
 
+// START OF ---- RIDER WEB-COMP
+server.get('/rider', (req,res) => {
+    res.sendFile('public/rider.js', { root : __dirname})
+});
+// END OF ---- RIDER WEB -COMP
 
 server.listen(3000, () => console.log('server started!'));

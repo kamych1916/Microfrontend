@@ -17,20 +17,23 @@ export class AppComponent{
   visibilityMainBtnSnd2 = "none";
   visibilityMainBtnSnd3 = "none";
   Result = "";
-  ResultRegister = "";
+  ResultRegister = "";  
 
   changeBtn(){
     this.visibilityMainBtn = "none"
     this.visibilityMainBtnSnd1 = "block"
     this.visibilityMainBtnSnd3 = "block"
     console.log('childInputChild: ', this.Result);
-    const event = new CustomEvent('connect-for-search', { detail: this.Result });
+    const data = { detail: { result: this.Result, scope: this } };
+    console.log(data)
+    const event: CustomEvent<any> = new CustomEvent('connect-for-search', data);
     window.dispatchEvent(event);
-  }
+  } 
+  
   changeBtnInvers(){
     this.visibilityMainBtn = "block"
     this.visibilityMainBtnSnd1 = "none"
-    this.visibilityMainBtnSnd3 = "none";
+    this.visibilityMainBtnSnd3 = "none"
     this.visibilityMainBtnSnd2 = "none"
     this.Result = ""
     this.invisibleInp = "hidden"
