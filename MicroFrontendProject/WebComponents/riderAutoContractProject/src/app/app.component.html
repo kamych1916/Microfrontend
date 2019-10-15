@@ -5,13 +5,13 @@
             <div class="row">
                 <div class="col-4">
                     <span>Номер Договора</span><br>
-                    <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                    <input [(ngModel)]="namecontractrider" (change)="sendData()" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
                     <span>Количество комнат</span><br>
-                    <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                    <input [(ngModel)]="countrooms" (change)="sendData()" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
                 </div>
                 <div class="col-4">
                     <span>Общая площадь</span><br>
-                    <input type="text" class="form-control" aria-describedby="addon-wrapping" value=""><br>
+                    <input readonly type="text" class="form-control" aria-describedby="addon-wrapping" value=""><br>
                     <span>Коэффициент андеррайтера (от 1 до 3)</span><br>
                     <input readonly type="text" class="form-control" aria-describedby="addon-wrapping"><br>
                 </div>

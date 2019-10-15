@@ -15,10 +15,12 @@ import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'
 })
 export class AppComponent implements OnInit  {
 
-  linkHeader = 'http://localhost:3000/autocontract/header';
-  linkFooter = 'http://localhost:3000/autocontract/footer';
-  linkModal  = 'http://localhost:3000/modal';
-  linkRider  = 'http://localhost:3000/rider';
+  IncludeRider = false
+
+  linkHeader = 'http://localhost:3000/autocontract/header'
+  linkFooter = 'http://localhost:3000/autocontract/footer'
+  linkModal  = 'http://localhost:3000/modal'
+  linkRider  = 'http://localhost:3000/rider'
   BackIcon32 = assetUrl('Back_32.png')
   PolicyIcon32 = assetUrl('Policy_32.png')
   PrintIcon32 = assetUrl('Print_32.png')
@@ -31,23 +33,25 @@ export class AppComponent implements OnInit  {
   sub: any  
   paramDataContr: any;
   paramDataClient: any;
+
+  namecontractrider:any;
+
   
-  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService, private httpService: HttpService, private route: ActivatedRoute, private router: Router){
+  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService, private httpService: HttpService, private router: Router){
     if(this.storage.get("token") == null) {
       this.router.navigate(['/auth'])
     }
   }
   
   ngOnInit() {
-    this.sub = this.route
-    .queryParams
-    .subscribe(params => {
-      console.log(params['ncontr'])
-      this.paramDataContr = params['ncontr']
-      console.log(params['nclient'])
-      this.paramDataClient = params['nclient']
-    });
-
+    // this.sub = this.route
+    // .queryParams
+    // .subscribe(params => {
+    //   console.log(params['ncontr'])
+    //   this.paramDataContr = params['ncontr']
+    //   console.log(params['nclient'])
+    //   this.paramDataClient = params['nclient']
+    // });
     const self = this;
     window.addEventListener('connect-for-search', (event) => {
       this.customEventListenerFunction(self, event)
@@ -60,7 +64,7 @@ export class AppComponent implements OnInit  {
   }
 
   ngOnDestroy(): void {
-    window.location.reload();
+    // window.location.reload();
     window.removeEventListener('changeNameToCustomEvent', (event) => {this.customEventListenerFunction}, true);
   }
 
@@ -98,11 +102,18 @@ export class AppComponent implements OnInit  {
       // InnerNewElem.appendChild(newElem)
     }else{
       // InnerNewElem.innerHTML = ""
-      // this.visibilityMainBtn = "none" 
+      this.visibilityMainBtn = "none" 
       this.showRiderChekBox = false
     }
   }
   showRider(){
+    this.IncludeRider = true
+    
+    
+    // console.log(document.getElementsByTagName('rider-webcomp'))
+
+
+
     this.visibilityContractBlock = "none"
     this.visibilityRiderBlock = "block"
   }

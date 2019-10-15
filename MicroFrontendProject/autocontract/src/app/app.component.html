@@ -11,7 +11,7 @@
                 <div style="width: 100%;height: 40vh;">
                     <div class="row ml-3">
                         <div class="col-"><img [src]="BackIcon32"></div>
-                        <div class="col"><h4><a href="" routerLink="/main">Назад</a></h4></div>
+                        <div class="col"><h4><a routerLink="/main">Назад</a></h4></div>
                     </div>
                     <div class="row ml-3">
                         <div class="col-"><img [src]="PolicyIcon32"></div>
@@ -24,12 +24,9 @@
                 </div>
             </div>
             <div class="row">
+
                 <footer-autocontract *axLazyElement="linkFooter"></footer-autocontract>
-                <!-- <span class="card-text" style="font-size: 13px;">
-                    ООО "Страховая Компания "Согласие"".<br>
-                    Лицензия ЦБ РФ от 25.05.2015 СИ № 1307, СЛ №1307, ОС №1307-03, ОС №1307-04, ОС №1307-05<br>
-                    <a href="http://www.soglasie.ru">http://www.soglasie.ru</a>
-                </span> -->
+
             </div>
         </div>
 
@@ -55,7 +52,8 @@
                 </div>
             </div>
             
-            <div  [ngStyle]="{display: visibilityRiderBlock}">
+            <!-- ПОДКЛЮЧЕНИЕ ВЕБ-КОМПОНЕНТА -->
+            <div *ngIf="IncludeRider" [ngStyle]="{display: visibilityRiderBlock}">
                 <rider-webcomp *axLazyElement="linkRider"></rider-webcomp>
             </div>
 

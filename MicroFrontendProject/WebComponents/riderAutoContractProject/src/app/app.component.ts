@@ -6,14 +6,14 @@ import { Component} from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent{
+  
+  namecontractrider: any;
+  countrooms: any;
 
-  // Result = "";
-  // ResultRegister = "";
-
-  // changeBtn(){
-  //   console.log('childInputChild: ', this.Result);
-  //   const event = new CustomEvent('connect-for-search', { detail: this.Result });
-  //   window.dispatchEvent(event);
-  // }
-
+  sendData() {
+    if(this.countrooms == undefined) alert('заполните пожалауйста поле "количество комнат"')
+    if(this.namecontractrider == undefined ) alert('заполните пожалауйста поле "Номер Договора"')
+    if(this.countrooms == "") alert('kek')
+    if(this.namecontractrider == "") alert('lol')
+  }
 }
