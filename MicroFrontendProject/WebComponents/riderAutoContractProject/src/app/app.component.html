@@ -4,10 +4,12 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-4">
-                    <span>Номер Договора</span><br>
-                    <input [(ngModel)]="namecontractrider" (change)="sendData()" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                    <span>Номер Договора</span><br>                    
+                    <!-- <input [(ngModel)]="userName" (ngModelChange)="onNameChange()" type="text" class="form-control" aria-describedby="addon-wrapping"/><br> -->
+                    <input [(ngModel)]="nameContractRider" (ngModelChange)="onDataInputRiderChange()" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                    
                     <span>Количество комнат</span><br>
-                    <input [(ngModel)]="countrooms" (change)="sendData()" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                    <input [(ngModel)]="countRoomsRider" (ngModelChange)="onDataInputRiderChange($event)" type="text" class="form-control" aria-describedby="addon-wrapping"/><br>
                 </div>
                 <div class="col-4">
                     <span>Общая площадь</span><br>
@@ -32,3 +34,6 @@
         </div>
     </div>
 </div>
+
+
+<!-- <input [(ngModel)]="testline" (change)="sendTest()" type="text" class="form-control" aria-describedby="addon-wrapping"> -->

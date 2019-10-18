@@ -1,4 +1,4 @@
-import { Component, Input, Inject, OnInit, AfterContentInit,  OnDestroy, OnChanges, SimpleChanges, SimpleChange, HostListener} from '@angular/core';
+import { Component, Inject} from '@angular/core';
 import { assetUrl } from 'src/single-spa/asset-url';
 import { HttpService } from './http.service';
 import { dataContract } from './dataContract'
@@ -13,7 +13,7 @@ import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'
   styleUrls: ['./app.component.css'],
   providers: [HttpService],
 })
-export class AppComponent implements OnInit  {
+export class AppComponent {
 
   IncludeRider = false
 
@@ -29,13 +29,19 @@ export class AppComponent implements OnInit  {
   visibilityRiderBlock = "none"
   visibilityContractBlock = "block"
   
-  nameClient: "kek"
+  nameClient: "Kamol"
   sub: any  
-  paramDataContr: any;
-  paramDataClient: any;
+  paramDataContr: any
+  paramDataClient: any
 
-  namecontractrider:any;
+  nameContractRider: any    
+  countRoomsRider: any
 
+  DataInputRiderChange(event){
+    this.nameContractRider = event.detail.ChildNCR
+    this.countRoomsRider = event.detail.ChildCR    
+    // console.log('parent: ', this.countRoomsRider, " - ", this.nameContractRider)
+  }
   
   constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService, private httpService: HttpService, private router: Router){
     if(this.storage.get("token") == null) {
@@ -43,45 +49,31 @@ export class AppComponent implements OnInit  {
     }
   }
   
-  ngOnInit() {
-    // this.sub = this.route
-    // .queryParams
-    // .subscribe(params => {
-    //   console.log(params['ncontr'])
-    //   this.paramDataContr = params['ncontr']
-    //   console.log(params['nclient'])
-    //   this.paramDataClient = params['nclient']
-    // });
-    const self = this;
-    window.addEventListener('connect-for-search', (event) => {
-      this.customEventListenerFunction(self, event)
-    }, true);
-  }
+  // ngOnInit() {
+  //   this.sub = this.route
+  //   .queryParams
+  //   .subscribe(params => {
+  //     console.log(params['ncontr'])
+  //     this.paramDataContr = params['ncontr']
+  //     console.log(params['nclient'])
+  //     this.paramDataClient = params['nclient']
+  //   });
+  //   const self = this;
+  //   window.addEventListener('connect-for-search', (event) => {
+  //     this.customEventListenerFunction(self, event)  
+  //   }, true);
+  // }
 
-  customEventListenerFunction(self, event) {
-    self.nameClient = event.detail.scope.Result
-    // console.log("parentComp: ", self.nameClient)
-  }
+  // customEventListenerFunction(self, event) {
+  //   self.nameClient = event.detail.scope.Result
+  //   // console.log("parentComp: ", self.nameClient)
+  // }
 
-  ngOnDestroy(): void {
-    // window.location.reload();
-    window.removeEventListener('changeNameToCustomEvent', (event) => {this.customEventListenerFunction}, true);
-  }
+  // ngOnDestroy(): void {
+  //   // window.location.reload();
+  //   window.removeEventListener('changeNameToCustomEvent', (event) => {this.customEventListenerFunction}, true);
+  // }
 
-  contract: dataContract = new dataContract(); // данные от пользователя
-
-  receivedData: dataContract; // полученные данные
-
-  done: boolean = false;
-
-  save(contract: dataContract, ){
-    contract.nameclient = this.nameClient
-    this.httpService.postDataContract(contract)
-        .subscribe(
-          (data: dataContract) => {this.receivedData=data; this.done=true, alert(this.receivedData.statmess)},
-          error => {alert('что-то пошло не так!')}
-        );
-  };
 
   Exit(){
     this.storage.remove("token");
@@ -108,12 +100,7 @@ export class AppComponent implements OnInit  {
   }
   showRider(){
     this.IncludeRider = true
-    
-    
     // console.log(document.getElementsByTagName('rider-webcomp'))
-
-
-
     this.visibilityContractBlock = "none"
     this.visibilityRiderBlock = "block"
   }
@@ -121,5 +108,40 @@ export class AppComponent implements OnInit  {
     this.visibilityContractBlock = "block"
     this.visibilityRiderBlock = "none"
   }
+
+
+  contract: dataContract = new dataContract(); // данные от пользователя
+
+  receivedData: dataContract; // полученные данные
+
+  done: boolean = false;
+
+  save(contract: dataContract, ){
+    if(this.showRiderChekBox == true){
+      if(this.nameContractRider == undefined || "" && this.countRoomsRider == undefined || "" ){
+        alert("Пожалуйста заполните все поля в 'Квартира Эксперсс'")
+      }else{
+        contract.nameclient = this.nameClient
+        contract.namecontractrider = this.nameContractRider
+        contract.countroomsrider = this.countRoomsRider
+        this.httpService.postDataContract(contract)
+            .subscribe(
+              (data: dataContract) => {this.receivedData=data; this.done=true, alert(this.receivedData.statmess)},
+              error => {alert('что-то пошло не так!')}
+            );
+      }
+    }else{
+      contract.namecontractrider = undefined
+      contract.countroomsrider = undefined
+      this.httpService.postDataContract(contract)
+          .subscribe(
+            (data: dataContract) => {this.receivedData=data; this.done=true, alert(this.receivedData.statmess)},
+            error => {alert('что-то пошло не так!')}
+          );
+    }
+  };
+
+
+
 }
 

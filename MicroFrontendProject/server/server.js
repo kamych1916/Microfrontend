@@ -55,7 +55,7 @@ server.post('/auth/login', (req, res) => {
 
 // РЕГИСТРАЦИЯ НОВОГО ДОГОВОРА
 server.post('/register/contract', (req, res) => {
-  const {namecontract, nameclient, namecar, costcar} = req.body;
+  const {namecontract, nameclient, namecar, costcar, namecontractrider, countroomsrider} = req.body;
   fs.readFile("./contracts.json", (err, data) => {  
     if (err) {
       const status = 401
@@ -76,9 +76,25 @@ server.post('/register/contract', (req, res) => {
       const status = 401
       const message = "error"
       res.status(status).json({status, message})
-    }else{  
-      data.contracts.push({id: last_item_id + 1, namecontract: namecontract, nameclient: nameclient, namecar: namecar, costcar: costcar}); //add some data
-      console.log("контракт добавлен!")
+    }else{
+      console.log(namecontractrider, countroomsrider)
+      // if(namecontractrider ==  undefined && countroomsrider == undefined ){
+      //   // data.contracts.push({id: last_item_id + 1, namecontract: namecontract, nameclient: nameclient, namecar: namecar, costcar: costcar}); //add some data
+      //   console.log("контракт добавлен!")
+      // }else{
+      //   console.log("lol")
+      // }
+      if(namecontractrider ==  undefined && countroomsrider == undefined ){
+        data.contracts.push({id: last_item_id + 1, namecontract: namecontract, nameclient: nameclient, namecar: namecar, costcar: costcar}); //add some data
+        console.log("контракт добавлен!")
+      }else{
+        // {"id":1,"rider":[{"id":"3"}],"namecontract":"321","nameclient":"2","namecar":"tesla","coatcar":"500000"}
+        // {"id":3,"namecontractrider":"897","product":"property","countRooms":"2"}
+        data.contracts.push({id: last_item_id + 1, rider: [{id: last_item_id + 2}], namecontract: namecontract, nameclient: nameclient, namecar: namecar, costcar: costcar}); //add some data
+        data.contracts.push({id: last_item_id + 2, namecontractrider: namecontractrider, product: "property", countroomsrider: countroomsrider }); //add some data
+        console.log("контракт вместе с райдером добавлены!")
+      } 
+
     }
 
     var writeData = fs.writeFile("./contracts.json", JSON.stringify(data), (err, result) => {  // WRITE

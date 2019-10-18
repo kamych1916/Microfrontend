@@ -2,35 +2,40 @@
 
 ## Микроприложения
 ```sh
-cd server
-npm install
+cd fake-api-jwt-json-server-master
 node server
 ```
 ```sh
-cd root
-npm install
+cd root-html-file
+npm i
 npm start
 ```
 ```sh
 cd auth
-npm install
+npm i
 npm start
 ```
 ```sh
 cd main
-npm install
-npm start
-```
-```sh
-cd autocontract
-npm install
+npm i
 npm start
 ```
 
 ## Веб-компоненты
 ```sh
-cd WebComponents/mainWebComp/
-npm install
+cd WebComponents/headerInAuthServer/
+node server
+```
+```sh
+cd WebComponents/headerMainServer/
+node server
+```
+```sh
+cd WebComponents/footerInAuthServer/
+node server
+```
+```sh
+cd WebComponents/footerMainServer/
 node server
 ```
 
@@ -39,7 +44,7 @@ node server
 ```sh
 http://localhost:4200/auth
 
-логин: 1@email.com
-пароль: 1 
+логин: bruno@email.com
+пароль: bruno 
 ```
 

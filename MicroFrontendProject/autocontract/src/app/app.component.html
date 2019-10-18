@@ -54,7 +54,7 @@
             
             <!-- ПОДКЛЮЧЕНИЕ ВЕБ-КОМПОНЕНТА -->
             <div *ngIf="IncludeRider" [ngStyle]="{display: visibilityRiderBlock}">
-                <rider-webcomp *axLazyElement="linkRider"></rider-webcomp>
+                <rider-webcomp (DataInputRiderChange)="DataInputRiderChange($event)" *axLazyElement="linkRider"></rider-webcomp>   
             </div>
 
             <div [ngStyle]="{display: visibilityContractBlock}">
@@ -96,7 +96,9 @@
                         <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Страхователь</div>
                         <div class="card-body">
                             <!-- ПОДКЛЮЧЕНИЕ ВЕБ-КОМПОНЕНТА  -->
-                            <modal-webcomp *axLazyElement="linkModal"></modal-webcomp>
+                            <!-- <modal-webcomp *axLazyElement="linkModal"></modal-webcomp> -->
+                            <!-- <script src="../assets/modal.js"></script> -->
+                            <modal-webcomp ></modal-webcomp>
                         </div>
                     </div>
                 </div>

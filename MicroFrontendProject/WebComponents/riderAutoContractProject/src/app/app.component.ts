@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Output, EventEmitter, Input} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,14 +6,17 @@ import { Component} from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent{
-  
-  namecontractrider: any;
-  countrooms: any;
 
-  sendData() {
-    if(this.countrooms == undefined) alert('заполните пожалауйста поле "количество комнат"')
-    if(this.namecontractrider == undefined ) alert('заполните пожалауйста поле "Номер Договора"')
-    if(this.countrooms == "") alert('kek')
-    if(this.namecontractrider == "") alert('lol')
+  nameContractRider: any
+  countRoomsRider: any
+  @Output() DataInputRiderChange = new EventEmitter<any>()
+
+
+  onDataInputRiderChange(){
+    this.DataInputRiderChange.emit({ ChildNCR: this.nameContractRider, ChildCR: this.countRoomsRider });
   }
+
+
 }
+
+// this.InputLineChanged.emit({ ChildNCR: this.namecontractrider, ChildCR: this.countrooms });

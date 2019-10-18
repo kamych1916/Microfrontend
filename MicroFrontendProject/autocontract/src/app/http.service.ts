@@ -10,7 +10,7 @@ export class HttpService{
      
     postDataContract(contract: dataContract){
         // contract.namecontract = Globals.nameClient
-        const body = {namecontract: contract.namecontract, nameclient: contract.nameclient, namecar: contract.namecar, costcar: contract.costcar};
+        const body = {namecontract: contract.namecontract, nameclient: contract.nameclient, namecar: contract.namecar, costcar: contract.costcar, namecontractrider: contract.namecontractrider, countroomsrider: contract.countroomsrider};
         return this.http.post('http://localhost:8000/register/contract', body); 
     }
 }

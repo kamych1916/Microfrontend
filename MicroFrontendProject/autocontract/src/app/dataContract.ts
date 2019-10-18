@@ -4,4 +4,6 @@ export class dataContract{
     namecar: string;
     costcar: string;
     statmess: string;
+    namecontractrider: string;
+    countroomsrider: string;
 }
