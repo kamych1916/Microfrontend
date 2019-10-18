@@ -1,8 +1,16 @@
-import { Component} from '@angular/core';
+import { Component, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent{}
+export class AppComponent{
+
+  @Output() DataToMainForExit = new EventEmitter<any>()
+
+  SendDataToMainForExit(event: boolean){
+    this.DataToMainForExit.emit(event);
+  }
+
+}

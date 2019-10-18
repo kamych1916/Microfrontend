@@ -75,9 +75,11 @@ export class AppComponent {
   // }
 
 
-  Exit(){
-    this.storage.remove("token");
-    this.router.navigate(['/auth'])
+  DataToAutoContractForExit(event){
+    if(event.detail == true){
+      this.storage.remove("token");
+      this.router.navigate(['/auth'])
+    }
   }
 
   showRiderChekBox = false

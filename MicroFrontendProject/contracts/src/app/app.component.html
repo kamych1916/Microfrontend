@@ -1,6 +1,6 @@
 <div class="row">
-    <header-contracts style="width: 98%" *axLazyElement="linkHeader"></header-contracts>
-    <img width="24" style="margin: 46px 0 0 -12px" height="24" src="http://localhost:3000/icons/exit" (click)="Exit()">
+    <header-contracts style="width: 98%" (DataToMainForExit)="DataToMainForExit($event)" *axLazyElement="linkHeader"></header-contracts>
+    <!-- <img width="24" style="margin: 46px 0 0 -12px" height="24" src="http://localhost:3000/icons/exit" (click)="Exit()"> -->
 </div>
 <div class="p-3">
   <div class="row">

@@ -55,8 +55,10 @@ export class AppComponent {
     //   // this.storage.remove("token");
     // }
   }
-  Exit(){
-    this.storage.remove("token");
-    this.router.navigate(['/auth'])
+  DataToMainForExit(event){
+    if(event.detail == true){
+      this.storage.remove("token");
+      this.router.navigate(['/auth'])
+    }
   }
 }

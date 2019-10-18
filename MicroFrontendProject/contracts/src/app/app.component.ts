@@ -55,10 +55,12 @@ export class AppComponent implements OnDestroy{
   postParamData(){
     this.router.navigate(['/auto/contract'], {queryParams: {ncontr: this.ResultNameContract, nclient: this.ResultNameClient}})
   }
-
-  Exit(){
-    this.storage.remove("token");
-    this.router.navigate(['/auth'])
+  
+  DataToMainForExit(event){
+    if(event.detail == true){
+      this.storage.remove("token");
+      this.router.navigate(['/auth'])
+    }
   }
   ngOnDestroy(){
     window.location.reload();
