@@ -1,5 +1,6 @@
 <div class="row">
-    <header-contracts style="width: 98%" (DataToMainForExit)="DataToMainForExit($event)" *axLazyElement="linkHeader"></header-contracts>
+    <!-- <header-contracts style="width: 98%" (DataToMainForExit)="DataToMainForExit($event)" *axLazyElement="linkHeader"></header-contracts> -->
+    <header-contracts style="width: 98%" (DataToMainForExit)="DataToMainForExit($event)"></header-contracts>
     <!-- <img width="24" style="margin: 46px 0 0 -12px" height="24" src="http://localhost:3000/icons/exit" (click)="Exit()"> -->
 </div>
 <div class="p-3">
@@ -50,7 +51,7 @@
           </div>
       </div>
       <div class="row">
-          <footer-main *axLazyElement="linkFooter"></footer-main>
+          <footer-main></footer-main>
       </div>
     </div>
 
@@ -98,17 +99,35 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <input (click)="postParamData()" [ngStyle]="{visibility: invisibleInp}" [(ngModel)]="Result" style="background-color: #f5822c; color: white" type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
+                            <!-- <input  [(ngModel)]="Result" style="background-color: #f5822c; color: white" type="text" readonly class="form-control" aria-describedby="addon-wrapping"> -->
+                            <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Номер договора</th>
+                                    <th scope="col">Страхователь</th>
+                                  </tr>
+                                </thead>
+                                <tbody [ngStyle]="{visibility: invisibleInp}" (click)="postParamData()">
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>
+                                        <input type="text" [(ngModel)]="ResultNameContract" style="border: 0" readonly class="form-control" aria-describedby="addon-wrapping">
+                                    </td>
+                                    <td>
+                                        <input type="text" [(ngModel)]="ResultNameClient" style="border: 0" readonly class="form-control" aria-describedby="addon-wrapping">
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                </tbody>
+                              </table>
+                            </div><br>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     </div>
-
-
   </div>
 </div>

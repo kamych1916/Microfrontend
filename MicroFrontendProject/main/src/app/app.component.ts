@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, AfterContentInit, AfterContentChecked } from '@angular/core';
 import { Router } from '@angular/router';
 import { assetUrl } from 'src/single-spa/asset-url';
 
@@ -9,7 +9,7 @@ import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   connected2 = assetUrl('connected2.png')
   HelpIcon24 = assetUrl('Help_24.png')
   PasswordIcon = assetUrl('Password_24.png')
@@ -49,12 +49,21 @@ export class AppComponent {
     if(this.storage.get("token") == null) {
       this.router.navigate(['/auth'])
     }
+
+    
+    // console.log(hm.setElementAttribute())
+    // if()
     // }else{
     //   alert(this.storage.get("token"))
     //   console.log("kek")
     //   // this.storage.remove("token");
     // }
   }
+  // ngAfterContentChecked(){
+  //   let hm = document.getElementById('#header-main')
+  //   hm.removeAttribute("style")
+  //   console.log(hm)    
+  // }
   DataToMainForExit(event){
     if(event.detail == true){
       this.storage.remove("token");

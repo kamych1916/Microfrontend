@@ -1,4 +1,4 @@
-import { Component, Inject} from '@angular/core';
+import { Component, Inject , OnInit} from '@angular/core';
 import { assetUrl } from 'src/single-spa/asset-url';
 import { HttpService } from './http.service';
 import { dataContract } from './dataContract'
@@ -13,7 +13,7 @@ import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'
   styleUrls: ['./app.component.css'],
   providers: [HttpService],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   IncludeRider = false
 
@@ -43,26 +43,23 @@ export class AppComponent {
     // console.log('parent: ', this.countRoomsRider, " - ", this.nameContractRider)
   }
   
-  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService, private httpService: HttpService, private router: Router){
+  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService, private httpService: HttpService, private router: Router, private route: ActivatedRoute,){
     if(this.storage.get("token") == null) {
       this.router.navigate(['/auth'])
     }
   }
   
-  // ngOnInit() {
-  //   this.sub = this.route
-  //   .queryParams
-  //   .subscribe(params => {
-  //     console.log(params['ncontr'])
-  //     this.paramDataContr = params['ncontr']
-  //     console.log(params['nclient'])
-  //     this.paramDataClient = params['nclient']
-  //   });
-  //   const self = this;
-  //   window.addEventListener('connect-for-search', (event) => {
-  //     this.customEventListenerFunction(self, event)  
-  //   }, true);
-  // }
+  ngOnInit() {
+    this.sub = this.route
+    .queryParams
+    .subscribe(params => {
+      console.log(params['ncontr'])
+      this.paramDataContr = params['ncontr']
+      console.log(params['nclient'])
+      this.paramDataClient = params['nclient']
+    });
+
+  }
 
   // customEventListenerFunction(self, event) {
   //   self.nameClient = event.detail.scope.Result

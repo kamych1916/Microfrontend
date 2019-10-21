@@ -13,7 +13,7 @@
           "auth": "http://localhost:4201/main.js",
           "autocontract": "http://localhost:4202/main.js",
           "contracts": "http://localhost:4203/main.js",
-          "main": "http://localhost:4300/main.js",
+          "main": "http://localhost:4204/main.js",
           "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.5/system/single-spa.min.js"
         }
       }
@@ -28,6 +28,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/extras/named-register.min.js"></script>
 
     <script src="http://localhost:3000/modal"></script>
+    <script src="http://localhost:3000/main/header"></script>
+    <script src="http://localhost:3000/main/footer"></script>
+    <script src="http://localhost:3000/auth/header"></script>
+    <script src="http://localhost:3000/auth/footer"></script>
+    <script src="http://localhost:3000/contracts/header"></script>
     
   </head>
   <body>
@@ -40,7 +45,6 @@
           },
           function (location) {
             return location.pathname.startsWith('/main');
-            return true;
           }
         )
 
@@ -51,7 +55,6 @@
           },
           function (location) {
             return location.pathname.startsWith('/auth');
-            return true;
           }
         );
 
@@ -62,7 +65,6 @@
           },
           function (location) {
             return location.pathname.startsWith('/auto/contract');
-            return true;
           }
         );
 
@@ -73,12 +75,10 @@
           },
           function (location) {
             return location.pathname.startsWith('/contracts');
-            return true;
           }
         );
         singleSpa.start();
       })
     </script>
-    <import-map-overrides-full></import-map-overrides-full>
   </body>
 </html>

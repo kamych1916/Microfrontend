@@ -12,7 +12,7 @@ import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'
   styleUrls: ['./app.component.css'],
   providers: [HttpService],
 })
-export class AppComponent implements OnDestroy{
+export class AppComponent{
   title = 'contracts';
   HomeIcon = assetUrl('Home_32.png')
   CalcIcon32 = assetUrl('Calc_32.png')
@@ -27,7 +27,6 @@ export class AppComponent implements OnDestroy{
   linkHeader = 'http://localhost:3000/contracts/header'
   linkFooter = 'http://localhost:3000/autocontract/footer'
 
-  Result: any
 
   ResultNameContract: any
   ResultNameClient: any
@@ -47,7 +46,7 @@ export class AppComponent implements OnDestroy{
   search(contract: dataContracts ){
     this.httpService.postDataContract(contract)
             .subscribe(
-              (data: dataContracts) => {this.receivedData=data; this.done=true, this.ResultNameContract = this.receivedData.namecontract, this.ResultNameClient = this.receivedData.nameclient, this.Result = this.receivedData.FullNameContract, this.invisibleInp = "visible"},
+              (data: dataContracts) => {this.receivedData=data; this.done=true, this.ResultNameContract = this.receivedData.namecontract, this.ResultNameClient = this.receivedData.nameclient, this.invisibleInp = "visible"},
               error => {alert('Договор не найден!')}
             );
   };
@@ -62,7 +61,7 @@ export class AppComponent implements OnDestroy{
       this.router.navigate(['/auth'])
     }
   }
-  ngOnDestroy(){
-    window.location.reload();
-  }
+  // ngOnDestroy(){
+  //   window.location.reload();
+  // }
 }
