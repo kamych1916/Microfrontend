@@ -1,6 +1,10 @@
 const express = require('express');
 const server = express();
 
+server.get('/contracts/footer', (req,res) => {
+    res.sendFile('public/footerContractsServer.js', { root : __dirname})
+});
+
 server.get('/contracts/header', (req,res) => {
     res.sendFile('public/headerContractsServer.js', { root : __dirname})
 });

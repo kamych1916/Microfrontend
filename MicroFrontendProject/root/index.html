@@ -12,8 +12,7 @@
         "imports": {
           "auth": "http://localhost:4201/main.js",
           "autocontract": "http://localhost:4202/main.js",
-          "contracts": "http://localhost:4203/main.js",
-          "main": "http://localhost:4204/main.js",
+          "main": "http://localhost:4300/main.js",
           "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.5/system/single-spa.min.js"
         }
       }
@@ -32,6 +31,8 @@
     <script src="http://localhost:3000/main/footer"></script>
     <script src="http://localhost:3000/auth/header"></script>
     <script src="http://localhost:3000/auth/footer"></script>
+    <script src="http://localhost:3000/autocontract/header"></script>
+    <script src="http://localhost:3000/autocontract/footer"></script>
     <script src="http://localhost:3000/contracts/header"></script>
     
   </head>
@@ -44,7 +45,8 @@
             return System.import('main');
           },
           function (location) {
-            return location.pathname.startsWith('/main');
+            // return location.pathname.startsWith('/');
+            return true
           }
         )
 
@@ -65,16 +67,6 @@
           },
           function (location) {
             return location.pathname.startsWith('/auto/contract');
-          }
-        );
-
-        singleSpa.registerApplication(
-          'contracts',
-          function () {
-            return System.import('contracts');
-          },
-          function (location) {
-            return location.pathname.startsWith('/contracts');
           }
         );
         singleSpa.start();

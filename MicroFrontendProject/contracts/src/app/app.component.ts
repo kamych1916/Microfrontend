@@ -25,7 +25,7 @@ export class AppComponent{
   TaskIcon32 = assetUrl('Task_32.png')
 
   linkHeader = 'http://localhost:3000/contracts/header'
-  linkFooter = 'http://localhost:3000/autocontract/footer'
+  linkFooter = 'http://localhost:3000/contracts/footer'
 
 
   ResultNameContract: any

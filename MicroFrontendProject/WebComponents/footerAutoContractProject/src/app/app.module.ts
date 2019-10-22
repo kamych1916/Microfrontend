@@ -27,6 +27,6 @@ export class AppModule implements DoBootstrap {
 
   ngDoBootstrap() {
     const el = createCustomElement(AppComponent, { injector: this.injector });
-    customElements.define('header-webcomp', el);
+    customElements.define('footer-autocontract', el);
   }
 }
