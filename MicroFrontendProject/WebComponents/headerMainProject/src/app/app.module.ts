@@ -21,12 +21,13 @@ import {createCustomElement} from '@angular/elements';
   ]
 })
 export class AppModule implements DoBootstrap {
-  constructor(private injector: Injector) {
-
-  }
+  
+  constructor(private injector: Injector) {}
 
   ngDoBootstrap() {
     const el = createCustomElement(AppComponent, { injector: this.injector });
-    customElements.define('header-contracts', el);
+      if(customElements.get('header-main') == undefined || null){
+        customElements.define('header-main', el)
+      }else{}
   }
 }

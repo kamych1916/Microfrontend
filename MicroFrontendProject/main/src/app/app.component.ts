@@ -1,4 +1,4 @@
-import { Component, Inject, AfterContentInit, AfterContentChecked } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { assetUrl } from 'src/single-spa/asset-url';
 
@@ -9,13 +9,13 @@ import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent{
+export class AppComponent  {
   connected2 = assetUrl('connected2.png')
   HelpIcon24 = assetUrl('Help_24.png')
   PasswordIcon = assetUrl('Password_24.png')
   SettingsIcon = assetUrl('Settings_24.png')
   SupportIcon = assetUrl('Support_24.png')
-  HomeIcon = assetUrl('Home_32.png')
+  // HomeIcon = assetUrl('Home_32.png')
   ClientsIcon = assetUrl('Clients_32.png')
   HelpIcon16 = assetUrl('Help_16.png')
   CalcIcon64 = assetUrl('Calc_64.png')
@@ -29,7 +29,7 @@ export class AppComponent{
   QueriesIcon64 = assetUrl('Queries_64.png')
   PoliciesIcon64 = assetUrl('Policies_64.png')
   PoliciesIcon32 = assetUrl('Policies_32.png')
-  LogoIcon = assetUrl('Logo.png')
+  // LogoIcon = assetUrl('Logo.png')
   LogoCompanyIcon = assetUrl('Logo_Company.png')
   LogoCompany2Icon = assetUrl('Logo_Company2.png')
   PoliciesSupportIcon32 = assetUrl('PoliciesSupport_32.png')
@@ -49,7 +49,6 @@ export class AppComponent{
     if(this.storage.get("token") == null) {
       this.router.navigate(['/auth'])
     }
-
     
     // console.log(hm.setElementAttribute())
     // if()
@@ -59,11 +58,7 @@ export class AppComponent{
     //   // this.storage.remove("token");
     // }
   }
-  // ngAfterContentChecked(){
-  //   let hm = document.getElementById('#header-main')
-  //   hm.removeAttribute("style")
-  //   console.log(hm)    
-  // }
+
   DataToMainForExit(event){
     if(event.detail == true){
       this.storage.remove("token");

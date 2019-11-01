@@ -8,8 +8,7 @@ import { Component, Output, EventEmitter} from '@angular/core';
 export class AppComponent{
 
   @Output() DataToMainForExit = new EventEmitter<any>()
-
-  SendDataToMainForExit(event: boolean){
+  SendDataToMainForExit(event){
     this.DataToMainForExit.emit(event);
   }
 

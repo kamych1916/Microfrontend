@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
@@ -20,14 +20,14 @@ import { EmptyRouteComponent } from './empty-route/empty-route.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    AppRoutingModule,
+    // BrowserAnimationsModule,
     HttpModule,
     HttpClientModule,
-    AppRoutingModule,
-    LazyElementsModule,
     ElModule.forRoot(),
     FormsModule,
-    StorageServiceModule
+    StorageServiceModule,
+    LazyElementsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

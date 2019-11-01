@@ -1,4 +1,4 @@
-import { Component, Inject , OnInit} from '@angular/core';
+import { Component, Inject , OnInit, AfterContentChecked, AfterContentInit} from '@angular/core';
 import { assetUrl } from 'src/single-spa/asset-url';
 import { HttpService } from './http.service';
 import { dataContract } from './dataContract'
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit{
   visibilityRiderBlock = "none"
   visibilityContractBlock = "block"
   
-  nameClient: "Kamol"
+  nameClient: any
   sub: any  
   paramDataContr: any
   paramDataClient: any
@@ -47,7 +47,10 @@ export class AppComponent implements OnInit{
     if(this.storage.get("token") == null) {
       this.router.navigate(['/auth'])
     }
+
   }
+
+  
   
   ngOnInit() {
     this.sub = this.route
@@ -58,20 +61,37 @@ export class AppComponent implements OnInit{
       console.log(params['nclient'])
       this.paramDataClient = params['nclient']
     });
+    // Неработает пока что! Пытался связать через события микро прил. и веб-комп. Если в параметрах что то есть, то поле веб-комп. изменится.
+    // const event: CustomEvent<any> = new CustomEvent('connect-for-input-clientname-from-params', this.paramDataClient);
+    // window.dispatchEvent(event);
+    
+    const self = this;
+    window.addEventListener('connect-for-search', (event) => {
+      this.customEventListenerFunction(self, event)  
+    }, true);
 
+
+    // console.log(document.getElementById('webcomp').previousElementSibling)
   }
-
-  // customEventListenerFunction(self, event) {
-  //   self.nameClient = event.detail.scope.Result
-  //   // console.log("parentComp: ", self.nameClient)
+  
+  customEventListenerFunction(self, event) {
+    self.nameClient = event.detail.scope.Result
+    // console.log("parentComp: ", self.nameClient)
+  }
+  // ngAfterContentChecked(){
+  //   var el = document.getElementById('test');
+  //   console.log(el)
   // }
-
+  
   // ngOnDestroy(): void {
+  //   var el = document.getElementById('test');
+  //   el.parentNode.removeChild(el);
+    
   //   // window.location.reload();
   //   window.removeEventListener('changeNameToCustomEvent', (event) => {this.customEventListenerFunction}, true);
   // }
-
-
+  
+  
   DataToAutoContractForExit(event){
     if(event.detail == true){
       this.storage.remove("token");
@@ -132,6 +152,7 @@ export class AppComponent implements OnInit{
     }else{
       contract.namecontractrider = undefined
       contract.countroomsrider = undefined
+      contract.nameclient = this.nameClient
       this.httpService.postDataContract(contract)
           .subscribe(
             (data: dataContract) => {this.receivedData=data; this.done=true, alert(this.receivedData.statmess)},

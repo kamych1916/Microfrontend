@@ -1,9 +1,9 @@
-<a routerLink="/auto/contract">
-    kek
-</a>
+<router-outlet></router-outlet>
 <div class="row">
     <!-- <header-contracts style="width: 98%" (DataToMainForExit)="DataToMainForExit($event)" *axLazyElement="linkHeader"></header-contracts> -->
-    <header-contracts style="width: 98%" (DataToMainForExit)="DataToMainForExit($event)"></header-contracts>
+    <!-- <header-contracts style="width: 98%" (DataToMainForExit)="DataToMainForExit($event)" *axLazyElement="linkHeader"></header-contracts> -->
+    <header-main style="width: 98%" (DataToMainForExit)="DataToMainForExit($event)" *axLazyElement="linkHeader"></header-main>
+
     <!-- <img width="24" style="margin: 46px 0 0 -12px" height="24" src="http://localhost:3000/icons/exit" (click)="Exit()"> -->
 </div>
 <div class="p-3">
@@ -54,7 +54,7 @@
           </div>
       </div>
       <div class="row">
-          <footer-main></footer-main>
+          <footer-autocontract *axLazyElement="linkFooter"></footer-autocontract>
       </div>
     </div>
 

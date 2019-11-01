@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { LazyElementsModule } from '@angular-extensions/elements';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -19,7 +19,7 @@ import { EmptyRouteComponent } from './empty-route/empty-route.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     AppRoutingModule,
     HttpModule,
     HttpClientModule,

@@ -8,7 +8,10 @@
   "author": "Joel Denning",
   "license": "MIT",
   "devDependencies": {
+    "jspm": "^0.16.55",
     "serve": "^11.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "sofe": "npm:sofe@^3.0.0"
+  }
 }

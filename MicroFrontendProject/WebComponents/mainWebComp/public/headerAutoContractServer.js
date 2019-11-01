@@ -101679,15 +101679,15 @@ __webpack_require__.r(__webpack_exports__);
 
 let AppComponent = class AppComponent {
     constructor() {
-        this.DataToAutoContractForExit = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.DataToAutoContractExit = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
     SendDataToAutoContractForExit(event) {
-        this.DataToAutoContractForExit.emit(event);
+        this.DataToAutoContractExit.emit(event);
     }
 };
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
-], AppComponent.prototype, "DataToAutoContractForExit", void 0);
+], AppComponent.prototype, "DataToAutoContractExit", void 0);
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-root',

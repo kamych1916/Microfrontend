@@ -13,7 +13,7 @@ if (environment.production) {
 }
 
 const lifecycles = singleSpaAngular({
-  bootstrapFunction: singleSpaProps => {
+  bootstrapFunction: (singleSpaProps: any) => {
     singleSpaPropsSubject.next(singleSpaProps);
     return platformBrowserDynamic().bootstrapModule(AppModule);
   },
@@ -23,5 +23,46 @@ const lifecycles = singleSpaAngular({
 });
 
 export const bootstrap = lifecycles.bootstrap;
-export const mount = lifecycles.mount;
+
+export const mount = 
+// [
+  lifecycles.mount;
+//   () => Promise.all([
+//     loadScript('http://localhost:3000/main/header'),
+//   ]),
+// ]
+
+  // function loadScript(url) {
+  //   return new Promise((resolve, reject) => {
+      
+  //     let MicroService = document.getElementById('single-spa-application:main').children;
+
+  //     let webcomp = document.getElementById('webcomp');
+
+  //     if(webcomp == null){
+
+  //       let scriptEl = document.createElement('script');
+  //       scriptEl.id = "webcomp"
+  //       scriptEl.src = url;
+  //       scriptEl.addEventListener('error', errEvt => {
+  //         reject(errEvt.error)
+  //       })
+  //       scriptEl.addEventListener('load', () => {
+  //         resolve()
+  //       })
+  //       MicroService[0].appendChild(scriptEl);
+  //       // document.head.appendChild(scriptEl)
+  //       // document.head.insertBefore(scriptEl, document.head.childNodes[16])
+
+  //     }else{
+        
+  //       webcomp.addEventListener('error', errEvt =>{
+  //         reject(errEvt.error);
+  //       })
+  //       resolve();
+
+  //     }
+
+  //   })
+  // }
 export const unmount = lifecycles.unmount;

@@ -1,9 +1,11 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { assetUrl } from 'src/single-spa/asset-url';
 import { HttpService} from './http.service';
 import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'
 import { User } from './user' 
 import { Router } from '@angular/router';
+import { singleSpaPropsSubject, SingleSpaProps } from 'src/single-spa/single-spa-props';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'auth-root',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
   providers: [HttpService],
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent{
 
   linkFooter = 'http://localhost:3000/auth/footer'
   linkHeader = 'http://localhost:3000/auth/header'
@@ -32,5 +34,16 @@ export class AppComponent {
                 error => alert('логин либо пароль неверны')
               );
   };
+  // singleSpaProps: SingleSpaProps = null;
+  // subscription: Subscription = null;
+  // ngOnInit() {
+  //   this.subscription = singleSpaPropsSubject.subscribe(
+  //     props => this.singleSpaProps = props
+  //   )
+  //   console.log("kek: ", this.singleSpaProps)
+  // }
+  // ngOnDestroy() {
+  //   this.subscription.unsubscribe()
+  // }
 }
 

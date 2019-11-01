@@ -12,6 +12,7 @@
         "imports": {
           "auth": "http://localhost:4201/main.js",
           "autocontract": "http://localhost:4202/main.js",
+          "contracts": "http://localhost:4203/main.js",
           "main": "http://localhost:4300/main.js",
           "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.5/system/single-spa.min.js"
         }
@@ -25,19 +26,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/extras/amd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/extras/named-exports.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/extras/named-register.min.js"></script>
-
-    <script src="http://localhost:3000/modal"></script>
-    <script src="http://localhost:3000/main/header"></script>
-    <script src="http://localhost:3000/main/footer"></script>
-    <script src="http://localhost:3000/auth/header"></script>
-    <script src="http://localhost:3000/auth/footer"></script>
-    <script src="http://localhost:3000/autocontract/header"></script>
-    <script src="http://localhost:3000/autocontract/footer"></script>
-    <script src="http://localhost:3000/contracts/header"></script>
-    
-  </head>
-  <body>
-    <script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.slim.js"
+  integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+  crossorigin="anonymous"></script>
+  
+</head>
+<body>
+  <script>
       System.import('single-spa').then(function (singleSpa) {
         singleSpa.registerApplication(
           'main',
@@ -45,10 +41,13 @@
             return System.import('main');
           },
           function (location) {
-            // return location.pathname.startsWith('/');
-            return true
+            return location.pathname.startsWith('/main');
+          },
+          {
+            test: ""
           }
-        )
+        );
+        singleSpa.unloadApplication('main', {waitForUnmount: true});
 
         singleSpa.registerApplication(
           'auth',
@@ -59,6 +58,7 @@
             return location.pathname.startsWith('/auth');
           }
         );
+        singleSpa.unloadApplication('auth', {waitForUnmount: true});
 
         singleSpa.registerApplication(
           'autocontract',
@@ -69,7 +69,24 @@
             return location.pathname.startsWith('/auto/contract');
           }
         );
+        singleSpa.unloadApplication('autocontract', {waitForUnmount: true});
+
+        singleSpa.registerApplication(
+          'contracts',
+          function () {
+            return System.import('contracts');
+          },
+          function (location) {
+            return location.pathname.startsWith('/contracts');
+          }
+        );
+        singleSpa.unloadApplication('contracts', {waitForUnmount: true});
+
         singleSpa.start();
+        // singleSpa.setBootstrapMaxTime(3000, true)
+        // window.addEventListener('single-spa:app-change', () => {
+        //     console.log('A routing event occurred where at least one application was mounted/unmounted');
+        // });
       })
     </script>
   </body>

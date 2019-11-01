@@ -14,6 +14,8 @@ import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'
 })
 export class AppComponent{
   title = 'contracts';
+
+  
   HomeIcon = assetUrl('Home_32.png')
   CalcIcon32 = assetUrl('Calc_32.png')
   PoliciesIcon32 = assetUrl('Policies_32.png')
@@ -24,8 +26,8 @@ export class AppComponent{
   bsoIcon32 = assetUrl('bso_32.png')
   TaskIcon32 = assetUrl('Task_32.png')
 
-  linkHeader = 'http://localhost:3000/contracts/header'
-  linkFooter = 'http://localhost:3000/contracts/footer'
+  linkHeader = 'http://localhost:3000/main/header'
+  linkFooter = 'http://localhost:3000/autocontract/footer'
 
 
   ResultNameContract: any

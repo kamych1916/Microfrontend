@@ -2,22 +2,27 @@ const express = require('express');
 const server = express();
 
 server.get('/contracts/footer', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/footerContractsServer.js', { root : __dirname})
 });
 
 server.get('/contracts/header', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/headerContractsServer.js', { root : __dirname})
 });
 
 server.get('/icons/exit', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/assets/Exit.png', { root : __dirname})
 });
 
 // START OF ---- MAIN WEB-COMP
 server.get('/main/header', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/headerMainServer.js', { root : __dirname})
 });
 server.get('/main/footer', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/footerMainServer.js', { root : __dirname})
 });
 // END OF ---- MAIN WEB -COMP
@@ -26,42 +31,52 @@ server.get('/main/footer', (req,res) => {
 
 // START OF ---- AUTOCONTRACt WEB-COMP AND ICONS
 server.get('/autocontract/header', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/headerAutoContractServer.js' , { root : __dirname});
 });
 
 server.get('/autocontract/footer', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/footerAutoContractServer.js' , { root : __dirname});
 });
 
 server.get('/icons/Logo', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/assets/Logo.png', { root : __dirname})
 });
 
 server.get('/icons/LogoCompany', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/assets/Logo_Company.png', { root : __dirname})
 });
 
 server.get('/icons/LogoCompany2', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/assets/Logo_Company2.png', { root : __dirname})
 });
 
 server.get('/icons/connected2', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/assets/connected2.png', { root : __dirname})
 });
 
 server.get('/icons/Help24', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/assets/Help_24.png', { root : __dirname})
 });
 
 server.get('/icons/Password24', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/assets/Password_24.png', { root : __dirname})
 });
 
 server.get('/icons/Settings24', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/assets/Settings_24.png', { root : __dirname})
 });
 
 server.get('/icons/Support24', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/assets/Support_24.png', { root : __dirname})
 });
 // END OF ---- AUTOCONTRACt WEB-COMP AND ICONS
@@ -69,6 +84,7 @@ server.get('/icons/Support24', (req,res) => {
 
 // START OF ---- MODAL WEB-COMP
 server.get('/modal', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/modal.js', { root : __dirname})
 });
 // END OF ---- MODAL WEB -COMP
@@ -76,17 +92,30 @@ server.get('/modal', (req,res) => {
 
 // START OF ---- AUTH WEB-COMP
 server.get('/auth/header', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/headerAuthServer.js', { root : __dirname})
 });
 server.get('/auth/footer', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/footerAuthServer.js', { root : __dirname})
 });
 // END OF ---- AUTH WEB -COMP
 
 // START OF ---- RIDER WEB-COMP
 server.get('/rider', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/rider.js', { root : __dirname})
 });
 // END OF ---- RIDER WEB -COMP
 
+
+
 server.listen(3000, () => console.log('server started!'));
+
+
+
+
+
+
+
+

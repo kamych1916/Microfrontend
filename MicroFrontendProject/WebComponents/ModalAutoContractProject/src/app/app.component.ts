@@ -66,17 +66,23 @@ export class AppComponent{
             );
   };
 
+  // Неработает пока что! Пытался связать через события микро прил. и веб-комп. Если в параметрах что то есть, то поле веб-комп. изменится.
   // ngOnInit(){
-  //   window.addEventListener('this-text-for-connect', this.ParentCustomEventListenerFunction, true)
+  //   window.addEventListener('connect-for-input-clientname-from-params', (event) => {
+  //     this.customEventListenerFunction(self, event)  
+  //   }, true); 
   // }
 
-  // ParentCustomEventListenerFunction(event){
-  //   console.log("FromParentComp: ", event.detail); 
-  //   this.Result = event.detail
+  // customEventListenerFunction(self, event){
+  //   console.log("FromChildComp: ", event.detail); 
+  //   self.Result = event.detail
+  //   self.visibilityMainBtn = "none"
+  //   self.visibilityMainBtnSnd1 = "block"
+  //   self.visibilityMainBtnSnd3 = "block"
   // }
 
   // ngOnDestroy(): void {
-  //   window.removeEventListener('ParentChangeNameToCustomEvent', this.ParentCustomEventListenerFunction, true);
+  //   window.removeEventListener('changeNameToCustomEvent', (event) => {this.customEventListenerFunction}, true);
   // }
 
 }
