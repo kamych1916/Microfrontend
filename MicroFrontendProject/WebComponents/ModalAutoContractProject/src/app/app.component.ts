@@ -1,14 +1,32 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpService } from './http.service';
-import { User } from './user' 
-
+import { User } from './user'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [HttpService],
+  providers: [HttpService]
 })
 export class AppComponent{
+
+  isVisible = false;
+  isVisible2 = false;
+
+
+  showModal(){
+    this.isVisible = true;
+  }
+  showModal2(){
+    this.isVisible2 = true;
+  }
+
+  handleCancel(){
+    this.isVisible = false;
+  }
+  handleCancel2(){
+    this.isVisible2 = false;
+  }
+  Result1 = 'kek'
 
   invisibleInp = "hidden";
   invisibleBtn = "hidden";
@@ -23,7 +41,6 @@ export class AppComponent{
     this.visibilityMainBtn = "none"
     this.visibilityMainBtnSnd1 = "block"
     this.visibilityMainBtnSnd3 = "block"
-    console.log('childInputChild: ', this.Result);
     const data = { detail: { result: this.Result, scope: this } };
     console.log(data)
     const event: CustomEvent<any> = new CustomEvent('connect-for-search', data);
@@ -66,23 +83,6 @@ export class AppComponent{
             );
   };
 
-  // Неработает пока что! Пытался связать через события микро прил. и веб-комп. Если в параметрах что то есть, то поле веб-комп. изменится.
-  // ngOnInit(){
-  //   window.addEventListener('connect-for-input-clientname-from-params', (event) => {
-  //     this.customEventListenerFunction(self, event)  
-  //   }, true); 
-  // }
-
-  // customEventListenerFunction(self, event){
-  //   console.log("FromChildComp: ", event.detail); 
-  //   self.Result = event.detail
-  //   self.visibilityMainBtn = "none"
-  //   self.visibilityMainBtnSnd1 = "block"
-  //   self.visibilityMainBtnSnd3 = "block"
-  // }
-
-  // ngOnDestroy(): void {
-  //   window.removeEventListener('changeNameToCustomEvent', (event) => {this.customEventListenerFunction}, true);
-  // }
-
 }
+
+

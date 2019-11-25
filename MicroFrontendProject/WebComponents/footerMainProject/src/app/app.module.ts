@@ -21,12 +21,11 @@ import {createCustomElement} from '@angular/elements';
   ]
 })
 export class AppModule implements DoBootstrap {
-  constructor(private injector: Injector) {
-
-  }
-
+  constructor(private injector: Injector) {}
   ngDoBootstrap() {
     const el = createCustomElement(AppComponent, { injector: this.injector });
-    customElements.define('footer-auth', el);
+      if(customElements.get('footer-contracts') == undefined || null){
+        customElements.define('footer-contracts', el)
+      }else{}
   }
 }

@@ -14,7 +14,6 @@ if (environment.production) {
 
 const lifecycles = singleSpaAngular({
   bootstrapFunction: singleSpaProps => {
-    // console.log(singleSpaProps);
     singleSpaPropsSubject.next(singleSpaProps);
     return platformBrowserDynamic().bootstrapModule(AppModule);
   },
@@ -23,26 +22,7 @@ const lifecycles = singleSpaAngular({
   NgZone: NgZone,
 });
 
-export const bootstrap = [
-  () => Promise.all([
-    loadScript('http://localhost:3000/autocontract/header'),
-  ]),
-  lifecycles.bootstrap
-]
+export const bootstrap = lifecycles.bootstrap;
 
-function loadScript(url) {
-  return new Promise((resolve, reject) => {
-    const scriptEl = document.createElement('script');
-    scriptEl.src = url;
-    scriptEl.addEventListener('error', errEvt => {
-      reject(errEvt.error)
-    })
-    scriptEl.addEventListener('load', () => {
-      resolve()
-    })
-    document.head.appendChild(scriptEl);
-    scriptEl.remove()
-  })
-}
 export const mount = lifecycles.mount;
 export const unmount = lifecycles.unmount;

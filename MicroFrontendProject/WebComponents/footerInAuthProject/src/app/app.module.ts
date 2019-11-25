@@ -15,18 +15,16 @@ import {createCustomElement} from '@angular/elements';
     FormsModule
   ],
   providers: [],
-  // bootstrap: [AppComponent],
   entryComponents: [
     AppComponent
   ]
 })
 export class AppModule implements DoBootstrap {
-  constructor(private injector: Injector) {
-
-  }
-
+  constructor(private injector: Injector) {}
   ngDoBootstrap() {
     const el = createCustomElement(AppComponent, { injector: this.injector });
-    customElements.define('footer-auth', el);
+      if(customElements.get('footer-auth') == undefined || null){
+        customElements.define('footer-auth', el)
+      }else{}
   }
 }

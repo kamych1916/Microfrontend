@@ -15,7 +15,7 @@ server.use(jsonServer.defaults());
 
 const SECRET_KEY = '123456789'
 
-const expiresIn = '1h'
+const expiresIn = '120'
 
 // Create a token from a payload 
 function createToken(payload){
@@ -40,16 +40,15 @@ function isConractExist({namecontract, nameclient}){
 server.post('/auth/login', (req, res) => {
   console.log("login endpoint called; request body:");
   console.log(req.body);
-  const {email, password} = req.body;
-  if (isAuthenticated({email, password}) === false) {
+  const {login, password} = req.body;
+  if (isAuthenticated({login, password}) === false) {
     const status = 401
     const message = 'Incorrect email or password'
     res.status(status).json({status, message})
     return
   }
-  const access_token = createToken({email, password})
-  console.log("Access Token:" + access_token);
-  res.status(200).json({access_token})
+  const access_token = createToken({login, password})
+  res.status(200).json({access_token, login})
 })
 
 

@@ -26,13 +26,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/extras/amd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/extras/named-exports.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/extras/named-register.min.js"></script>
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.slim.js"
-  integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js" integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
   
 </head>
 <body>
+
   <script>
       System.import('single-spa').then(function (singleSpa) {
         singleSpa.registerApplication(
@@ -42,9 +40,6 @@
           },
           function (location) {
             return location.pathname.startsWith('/main');
-          },
-          {
-            test: ""
           }
         );
         singleSpa.unloadApplication('main', {waitForUnmount: true});
@@ -83,10 +78,6 @@
         singleSpa.unloadApplication('contracts', {waitForUnmount: true});
 
         singleSpa.start();
-        // singleSpa.setBootstrapMaxTime(3000, true)
-        // window.addEventListener('single-spa:app-change', () => {
-        //     console.log('A routing event occurred where at least one application was mounted/unmounted');
-        // });
       })
     </script>
   </body>

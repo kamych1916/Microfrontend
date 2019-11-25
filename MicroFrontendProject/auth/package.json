@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:single-spa": "ng build --prod --deploy-url /dist/auth --output-hashing none",
-    "serve:single-spa": "ng serve --disable-host-check --port 4201 --deploy-url http://localhost:4201/ --live-reload false"
+    "build:single-spa": "ng build --prod --output-hashing none",
+    "serve:single-spa": "ng serve --disable-host-check --port 4201 --deploy-url http://localhost:4201/ --public-host http://localhost:4201/ --live-reload true"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +19,7 @@
     "@angular/common": "~8.1.0",
     "@angular/compiler": "~8.1.0",
     "@angular/core": "~8.1.0",
+    "@angular/elements": "^8.2.13",
     "@angular/forms": "~8.1.0",
     "@angular/platform-browser": "~8.1.0",
     "@angular/platform-browser-dynamic": "~8.1.0",

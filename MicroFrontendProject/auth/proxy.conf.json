@@ -1,0 +1,16 @@
+{
+  "/rest": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": { "^/rest": "http://localhost:8000"}    
+  },
+  "/webcomp": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": { "^/webcomp": "http://localhost:3000"}    
+  }
+}

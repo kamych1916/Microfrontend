@@ -1,0 +1,12 @@
+<div class="container mx-auto card-body mt-5" style="width:20%;">
+    <div style="width: 100%;" class="mt-5">
+        <span style="font-weight: bold">Вход..</span><br>
+        <span style="color: #ccc">Введите данные для входа в систему</span>
+        <div class="dropdown-divider" style="border-top: 2px solid DarkOrange"></div>
+        <span>Логин</span><br>
+        <input type="text" [(ngModel)]="user.Login" style="width: 100%"><br>
+        <span>Пароль</span><br>
+        <input type="password" [(ngModel)]="user.Password" (keyup.enter)="submit(user)" style="width: 100%"><br>
+        <button type="submit" (click)="submit(user)" class="mt-2">Войти</button>
+    </div>
+</div>

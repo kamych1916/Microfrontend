@@ -15,18 +15,16 @@ import {createCustomElement} from '@angular/elements';
     FormsModule
   ],
   providers: [],
-  // bootstrap: [AppComponent],
   entryComponents: [
     AppComponent
   ]
 })
 export class AppModule implements DoBootstrap {
-  constructor(private injector: Injector) {
-
-  }
-
+  constructor(private injector: Injector) {}
   ngDoBootstrap() {
     const el = createCustomElement(AppComponent, { injector: this.injector });
-    customElements.define('header-webcomp', el);
+      if(customElements.get('header-auth') == undefined || null){
+        customElements.define('header-auth', el)
+      }else{}
   }
 }

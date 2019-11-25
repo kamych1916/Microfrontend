@@ -1,0 +1,21 @@
+<div class="row">
+    <div style="width: 100%;height: auto;">
+        <div class="row ml-3">
+            <div class="col-"><img [src]="links.BackIcon32"></div>
+            <div class="col"><h4><a routerLink="/main">Назад</a></h4></div>
+        </div>
+        <div class="row ml-3">
+            <div class="col-"><img [src]="links.PolicyIcon32"></div>
+            <div class="col"><h4 style="font-weight: bold"><a href="">Договор</a></h4></div>
+        </div>
+        <div class="row ml-3">
+            <div class="col-"><img [src]="links.PrintIcon32"></div>
+            <div class="col"><h4><a href="">Печать</a></h4></div>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    <!-- START - ПОДКЛЮЧЕНИЕ ВЕБ-КОМПОНЕНТА -->
+    <footer-autocontract *axLazyElement="links.linkFooter"></footer-autocontract>
+    <!--  END  - ПОДКЛЮЧЕНИЕ ВЕБ-КОМПОНЕНТА -->
+</div>

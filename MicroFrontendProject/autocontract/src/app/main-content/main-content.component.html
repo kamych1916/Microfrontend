@@ -1,0 +1,111 @@
+
+<div class="row">
+    <div class="col-3">
+        <div class="row"><h4>Новый договор</h4></div>
+        <div class="row">КАСКО ФЛ. Предварительный</div>
+    </div>
+    <div class="col- pr-2">
+        <button (click)="save(contract)" type="button" class="btn btn-sm" style="border: 1px solid #f5822c !important;color: #f5822c ;background-color: rgba(0,0,0,.03)">сохранить</button>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="card" style="width: 100%; border: 1px solid  #f5822c !important">
+        <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Основные продукты</div>
+        <div class="card-body">
+            <button (click)="showContract()" class="btn" style="border: 1px solid #f5822c !important;color:#f5822c !important;">Основной договор</button>
+            <button (click)="showRider()" [ngStyle]="{display: visibilityMainBtn}" class="btn ml-3" style="border: 1px solid #f5822c !important;color:#f5822c !important;">Квартира Экспресс</button>
+        </div>
+    </div>
+</div>
+    
+
+<!-- START - ПОДКЛЮЧЕНИЕ ВЕБ-КОМПОНЕНТА -->
+<div *ngIf="IncludeRider" [ngStyle]="{display: visibilityRiderBlock}">
+    <rider-webcomp (DataInputRiderChange)="DataInputRiderChange($event)" *axLazyElement="links.linkRider"></rider-webcomp>   
+</div>
+
+
+<!--  END  - ПОДКЛЮЧЕНИЕ ВЕБ-КОМПОНЕНТА -->
+<div [ngStyle]="{display: visibilityContractBlock}">
+    <div class="row mt-4">
+        <div class="card" style="width: 100%; border: 1px solid  #f5822c !important">
+            <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Основные данные договора</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        <span>Номер договора</span><br>
+                        <input [(ngModel)]="contract.namecontract" value="{{paramDataContr}}" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                        <span>Дата и время начала действия</span><br>
+                        <input readonly type="text" class="form-control" aria-describedby="addon-wrapping"> 
+                    </div>
+                    <div class="col-4">
+                        <span>Дата заключения</span><br>
+                        <input type="text" readonly  class="form-control" aria-describedby="addon-wrapping" value=""><br>
+                        <span>Срок действия</span><br>
+                        <input type="text" readonly class="form-control" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="col-4">
+                        <span>Дата окончания действия</span><br>
+                        <input type="text" readonly class="form-control" aria-describedby="addon-wrapping" value="02.10.2020"><br>
+                        <span>Акция</span><br>
+                        <select class="custom-select" id="inputGroupSelect01">
+                                <option selected>Нет акции</option>
+                                <option value="1">ПЕРЕХОД</option>
+                                <option value="2">Формула согласия Расширенная</option>
+                                <option value="3">"Большая семья" для сотрудников Росбанка</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="card" style="width: 100%; border: 1px solid  #f5822c !important">
+            <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Страхователь</div>
+            <div class="card-body">
+                <!-- START - ПОДКЛЮЧЕНИЕ ВЕБ-КОМПОНЕНТА -->
+                <modal-webcomp *axLazyElement="links.linkModal"></modal-webcomp>
+                <!-- <kek-lol *axLazyElement="links.linkModal"></kek-lol> -->
+                <!--  END  - ПОДКЛЮЧЕНИЕ ВЕБ-КОМПОНЕНТА -->
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="card" style="width: 100%; border: 1px solid  #f5822c !important">
+            <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Транспортное средство</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        <span>Марка ТС</span><br>
+                        <input [(ngModel)]="contract.namecar" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                        <span>Дата начала эксплуатации</span><br>
+                        <input readonly type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                    </div>
+                    <div class="col-4">
+                        <span>Год выпуска</span><br>
+                        <input readonly type="text" class="form-control" aria-describedby="addon-wrapping" value=""><br>
+                        <span>Стоимость ТС (RUR)</span><br>
+                        <input [(ngModel)]="contract.costcar" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="card" style="width: 100%; border: 1px solid  #f5822c !important">
+            <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Райдеры</div>
+            <div class="card-body">
+                <div class="form-check">
+                    <input (click)="showRiderButton()" class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                        Квартира Экспресс
+                    </label>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

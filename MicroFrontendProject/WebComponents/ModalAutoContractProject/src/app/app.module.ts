@@ -1,17 +1,20 @@
 
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
-import { DoBootstrap, Injector, NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
-import { ElModule } from 'element-angular'
-import 'element-angular/theme/index.css'
 
+import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
+
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzCardModule } from 'ng-zorro-antd/card';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppComponent } from './app.component';
 import {createCustomElement} from '@angular/elements';
-
+import { HttpClientModule } from '@angular/common/http'; 
 @NgModule({
   declarations: [
     AppComponent
@@ -19,25 +22,30 @@ import {createCustomElement} from '@angular/elements';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpModule,
-    HttpClientModule,
     FormsModule,
-    ElModule.forRoot(),
+    HttpClientModule,
+
+    NzCardModule,
+    NzInputModule,
+    NgZorroAntdModule,
+    NzButtonModule,
+    NzModalModule,
+    NzGridModule
   ],
-  providers: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US }
+  ],
   // bootstrap: [AppComponent],
   entryComponents: [
     AppComponent
   ]
 })
 export class AppModule implements DoBootstrap {
-  constructor(private injector: Injector) {
-
-  }
-
+  constructor(private injector: Injector) {}
   ngDoBootstrap() {
     const el = createCustomElement(AppComponent, { injector: this.injector });
-    customElements.define('modal-webcomp', el);
+      if(customElements.get('modal-webcomp') == undefined || null){
+        customElements.define('modal-webcomp', el)
+      }else{}
   }
 }

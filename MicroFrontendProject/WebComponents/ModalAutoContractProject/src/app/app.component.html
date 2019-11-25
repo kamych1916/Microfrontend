@@ -1,90 +1,163 @@
-<div class="box-card" #card>
-    <input  class="btn" (click)="card.toggle = true" [ngStyle]="{display: visibilityMainBtn}" style="background-color: #f5822c; color: white" value="+ Найти/Добавить">
-    <el-dialog [title]="'Поиск лица'" [(visible)]="card.toggle">
-        <span>
-            <el-button style="background-color: #f5822c; color: white" class="mb-3">Физическое лицо</el-button>
-            <div class="row">
-                <div class="col">
-                    <span>Фамилия (кириллицей)</span><br>
-                    <input type="text" [(ngModel)]="user.Surname" class="form-control" aria-describedby="addon-wrapping"><br>
-                    <span>Отчество (кириллицей)</span><br>
-                    <input type="text" [(ngModel)]="user.Patronymic" class="form-control" aria-describedby="addon-wrapping"><br>
-                    <span>ИНН (для Индивидуальных Предпринимателей)</span><br>
-                    <input type="text" class="form-control" aria-describedby="addon-wrapping">
-                </div>
-                <div class="col">
-                    <span>Имя (кириллицей)</span><br>
-                    <input type="text" [(ngModel)]="user.Name" class="form-control" aria-describedby="addon-wrapping"><br>
-                    <span>Дата рождения</span><br>
-                    <input type="text" class="form-control" aria-describedby="addon-wrapping"><br>
-                </div>
-            </div>
-            <div class="card mt-4">
-                <div class="card-header">Результат поиска</div>
-                <div class="card-body">
-                    <input (click)="card.toggle = false; changeBtn()" [ngStyle]="{visibility: invisibleInp}" [(ngModel)]="Result" type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
-                </div>
-            </div>
-        </span>
-
-        <ng-template #footer>
-            <button (click)="changeBtn(); card.toggle = false; card.toggle2 = true" class="el-button" [ngStyle]="{visibility: invisibleBtn}" style="background-color: #f5822c; color: white">Создать</button>
-            <el-button (click)="search(user)" style="background-color: #f5822c; color: white">Найти</el-button>
-            <el-button (click)="card.toggle = false">Отменить</el-button>
+<div nz-row>
+  <div nz-col >
+    <button nz-button nzType="default" (click)="showModal()" [ngStyle]="{display: visibilityMainBtn}" style="background-color: #f5822c; color: white">
+      <span>+ Найти/Добавить</span>
+    </button>
+  </div>
+  <div [ngStyle]="{display: visibilityMainBtnSnd1}" nz-col  nzSpan="2">
+    <input nz-button nzType="default" [(ngModel)]="Result" style="width: 100%; border: 1px solid #ccc; cursor: default">
+  </div>
+  <div [ngStyle]="{display: visibilityMainBtnSnd2}" nz-col nzSpan="2">
+    <input nz-button nzType="default"  [disabled]="true"  [(ngModel)]="ResultRegister" style=" width: 100%; border: 1px solid #ccc; cursor: default">
+  </div>
+  <div nz-col  nzSpan="1">
+    <button [ngStyle]="{display: visibilityMainBtnSnd3}" style="cursor: default; margin: 0 0 0 20px; background-color: #f5822c; color: white" nz-button nzType="default" (click)="changeBtnInvers()" >Удалить</button>
+  </div>
+  <div nz-col  nzSpan="1">
+    <button [ngStyle]="{display: visibilityMainBtnSnd3}" style="cursor: default; margin: 0 0 0 30px; background-color: #f5822c; color: white" nz-button nzType="default" (click)="showModal2()" >Создать</button>
+  </div>
+</div>
+<nz-modal
+        [(nzVisible)]="isVisible"
+        [nzTitle]="modalTitle"
+        [nzContent]="modalContent"
+        [nzFooter]="modalFooter"
+        (nzOnCancel)="handleCancel()"
+        nzWidth="60%"
+      >
+        <ng-template #modalTitle>
+          Поиск лица
         </ng-template>
-    </el-dialog>
-
-
-
-
-    <div class="row">
-        <input class="btn"  [ngStyle]="{display: visibilityMainBtnSnd1}" [(ngModel)]="Result" style="border: 1px solid #ccc">
-        <input class="btn"  [ngStyle]="{display: visibilityMainBtnSnd2}" [(ngModel)]="ResultRegister" style="border: 1px solid #ccc">        
-        <button class="btn" (click)="changeBtnInvers()" [ngStyle]="{display: visibilityMainBtnSnd3}" style="background-color: #f5822c; color: white" >Удалить</button>
-        <button class="btn" (click)="card.toggle2 = true" [ngStyle]="{display: visibilityMainBtnSnd3}" style="background-color: #f5822c; color: white" >Создать</button>
-    </div>
-    <el-dialog  [title]="'Создание физ. лица'" [lock-scroll]="false" [(visible)]="card.toggle2"> zxQ0
-        <div class="row">
-            <div class="col">
-                <span>Фамилия</span><br>
-                <input type="text" [(ngModel)]="user.Surname" class="form-control" aria-describedby="addon-wrapping"><br>
-                <span>Дата рождения</span><br>
-                <input type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
-                <span>Контактное лицо</span><br>
-                <input type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
+  
+        <ng-template #modalContent>
+            <button style="cursor: default; margin: 0 0 30px 10px; background-color: #f5822c; color: white" nz-button nzType="default" >Физическое лицо</button>
+            <div nz-row  >
+            <div nz-col style="padding: 10px;" nzSpan="12">
+                <span>Фамилия (кириллицей)</span><br>
+                <input nz-input nzSize="large" [(ngModel)]="user.Surname" />
+                <br />
+                <br />
+                <span>Отчество (клицей)</span><br>
+                <input nz-input nzSize="large" [(ngModel)]="user.Patronymic" />
+                <br />
+                <br />
+                <span>ИНН (для Индивидуальных Предпринимателей)</span><br>
+                <input nz-input nzSize="large" [disabled]="true" />
             </div>
-            <div class="col">
+            <div nz-col style="padding: 10px;" nzSpan="12">
                 <span>Имя (кириллицей)</span><br>
-                <input type="text" [(ngModel)]="user.Name" class="form-control" aria-describedby="addon-wrapping"><br>                                            </div>
-            <div class="col">
-                <span>Отчество</span><br>
-                <input type="text" [(ngModel)]="user.Patronymic" class="form-control" aria-describedby="addon-wrapping"><br>    
+                <input nz-input nzSize="large" [(ngModel)]="user.Name" />
+                <br />
+                <br />
+                <span>Дата рождения</span><br>
+                <input nz-input nzSize="large" [disabled]="true"/> 
             </div>
-            <div class="col">
-                <span>Пол</span><br>
-                <input type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
-                <span>ИНН</span><br>
-                <input type="text" readonly class="form-control" aria-describedby="addon-wrapping">
+          </div>
+          <div nz-row style="margin-top:30px">
+              <div nz-col style="padding: 10px;">
+                    <nz-card nzType="inner" nzTitle="Результат поиска" >
+                      <div (click)="changeBtn(); handleCancel()">
+                        <input style="cursor: pointer;" [(ngModel)]="Result" [ngStyle]="{visibility: invisibleInp}" nz-input nzSize="large" [(ngModel)]="Result" /> 
+                      </div>
+                    </nz-card>
+              </div>
+          </div>
+            
+
+        </ng-template>
+  
+        <ng-template #modalFooter>
+          <button nz-button nzType="default" (click)="changeBtn(); showModal2()" [ngStyle]="{visibility: invisibleBtn}" style="background-color: #f5822c; color: white"><span>Создать</span></button>
+          <button nz-button nzType="default" (click)="search(user)" style="background-color: #f5822c; color: white">Найти</button>
+          <button nz-button nzType="default" (click)="handleCancel()" >Отменить</button>
+        </ng-template>
+      </nz-modal>
+      
+    <nz-modal
+    [(nzVisible)]="isVisible2"
+    [nzTitle]="modalTitle2"
+    [nzContent]="modalContent2"
+    [nzFooter]="modalFooter2"
+    (nzOnCancel)="handleCancel2()"
+    nzWidth="60%"
+    >
+
+      <ng-template #modalTitle2>
+        Создание физ. лица
+      </ng-template>
+
+      <ng-template #modalContent2>
+        <button style="cursor: default; margin: 0 0 30px 10px; background-color: #f5822c; color: white" nz-button nzType="default" >Физическое лицо</button>
+        <div nz-row >
+          <div nz-col style="padding: 10px;" nzSpan="6">
+              <span>Фамилия</span><br>
+              <input nz-input nzSize="large" [(ngModel)]="user.Surname" />
+              <br />
+              <br />
+              <span>Дата рождения</span><br>
+              <input nz-input nzSize="large" [disabled]="true" />
+              <br />
+              <br />
+              <span>Контактное лицо</span><br>
+              <input nz-input nzSize="large" [disabled]="true" />
+          </div>
+          <div nz-col style="padding: 10px;" nzSpan="6">
+              <span>Имя (кириллицей)</span><br>
+              <input nz-input nzSize="large" [(ngModel)]="user.Name" />
+          </div>
+          <div nz-col style="padding: 10px;" nzSpan="6">
+              <span>Отчество</span><br>
+              <input nz-input nzSize="large" [(ngModel)]="user.Patronymic" />
+          </div>
+          <div nz-col style="padding: 10px;" nzSpan="6">
+              <span>Пол</span><br>
+              <input nz-input nzSize="large" [disabled]="true" />
+              <br />
+              <br />
+              <span>ИНН</span><br>
+              <input nz-input nzSize="large" [disabled]="true" /> 
+          </div>
+        </div>
+
+
+
+
+
+        <div nz-row style="margin-top:30px; padding: 10px;">
+            <span>Примечание</span><br>
+            <input nz-input nzSize="large" [disabled]="true" /> 
+        </div>
+        <br />
+        <div nz-row style="margin-top:30px">
+            <div nz-col style="padding: 10px;">
+                  <nz-card nzType="inner" nzTitle="Контакты (0)" >
+                    <button style="cursor: default; background-color: #f5822c; color: white" nz-button nzType="default" >+ Добавить</button>
+                  </nz-card>
             </div>
         </div>
-        <span>Примечание</span><br>
-        <input type="text" readonly class="form-control" aria-describedby="addon-wrapping"><br>
-        <nav class="navbar navbar-light bg-light" style="border: 1px solid #aaa">
-            <span class="navbar-brand mb-0 h1">Контакты (0)</span>
-            <el-button style="background-color: #f5822c; color: white">+ Добавить</el-button>
-        </nav><br>
-        <nav class="navbar navbar-light bg-light" style="border: 1px solid #aaa">
-            <span class="navbar-brand mb-0 h1">Адреса</span>
-            <el-button style="background-color: #f5822c; color: white">+ Добавить</el-button>
-        </nav><br>
-        <nav class="navbar navbar-light bg-light" style="border: 1px solid #aaa">
-            <span class="navbar-brand mb-0 h1">Документы</span>
-            <el-button style="background-color: #f5822c; color: white">+ Добавить</el-button>
-        </nav>
-    
-        <ng-template #footer>
-            <el-button (click)="register(user); card.toggle2 = false; changeInp()" style="background-color: #f5822c; color: white">сохранить</el-button>
-            <el-button (click)="card.toggle2 = false">Отменить</el-button>
-        </ng-template>
-    </el-dialog>
-</div>
+        <br />
+        <div nz-row style="margin-top:30px">
+            <div nz-col style="padding: 10px;">
+                  <nz-card nzType="inner" nzTitle="Адреса" >
+                    <button style="cursor: default; background-color: #f5822c; color: white" nz-button nzType="default" >+ Добавить</button>
+                  </nz-card>
+            </div>
+        </div>
+        <br />
+        <div nz-row style="margin-top:30px">
+            <div nz-col style="padding: 10px;">
+                  <nz-card nzType="inner" nzTitle="Документы" >
+                    <button style="cursor: default; background-color: #f5822c; color: white" nz-button nzType="default" >+ Добавить</button>
+                  </nz-card>
+            </div>
+        </div>
+          
+
+      </ng-template>
+
+      <ng-template #modalFooter2>
+        <!-- <button nz-button nzType="default" (click)="showModal2()" style="background-color: #f5822c; color: white"> -->
+        <button nz-button nzType="default" (click)="register(user); handleCancel2(); changeInp()" style="background-color: #f5822c; color: white">Сохранить</button>
+        <button nz-button nzType="default" (click)="handleCancel2()" >Отменить</button>
+      </ng-template>
+    </nz-modal>

@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to phoenix-wc-wiki-ngx!');
+    expect(page.getTitleText()).toEqual('Welcome to modalautocontractproject');
   });
 
   afterEach(async () => {

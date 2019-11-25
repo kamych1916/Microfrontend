@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col- pr-2">
+        <img [src]="links.PoliciesIcon32">
+    </div>
+    <div class="col-3">
+        <div class="row"><h4>Договоры</h4></div>
+        <div class="row">Работа с портфелем договоров</div>
+    </div>  
+</div>
+<div class="row mt-2">
+    <div class="col">
+        <div class="row"><h4>Критерии поиска</h4></div>
+        <div class="row">Выберите критерии для поиска договоров. Требуется указать хотя бы один критерий</div>
+        <div class="row" style="height: 3px; background-color: #f5822c !important"></div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="card" style="width: 100%; border: 1px solid  #f5822c !important">
+        <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Поиск</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <span>Номер Договора</span><br>
+                    <input [(ngModel)]="contract.namecontract" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                </div>
+                <div class="col">
+                    <span>Страхователь</span><br>
+                    <input [(ngModel)]="contract.nameclient" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                </div>    
+            </div>
+            <div class="row">
+                <div class="btn ml-3" (click)="search(contract)" style="background-color: #f5822c; color: white">Найти</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="card" style="width: 100%; border: 1px solid  #f5822c !important">
+        <div class="card-header" style="color:#f5822c !important; border-bottom: 1px solid #f5822c !important; font-weight:bold">Результат поиска</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <!-- <input  [(ngModel)]="Result" style="background-color: #f5822c; color: white" type="text" readonly class="form-control" aria-describedby="addon-wrapping"> -->
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Номер договора</th>
+                            <th scope="col">Страхователь</th>
+                            </tr>
+                        </thead>
+                        <tbody [ngStyle]="{visibility: invisibleInp}" (click)="postParamData()">
+                            <tr>
+                            <th scope="row">1</th>
+                            <td>
+                                <input type="text" [(ngModel)]="ResultNameContract" style="border: 0" readonly class="form-control" aria-describedby="addon-wrapping">
+                            </td>
+                            <td>
+                                <input type="text" [(ngModel)]="ResultNameClient" style="border: 0" readonly class="form-control" aria-describedby="addon-wrapping">
+                            </td>
+                            </tr>
+                            <tr>
+                        </tbody>
+                        </table>
+                    </div><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,11 +8,13 @@ import { StorageServiceModule} from 'angular-webstorage-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormForAuthComponent } from './form-for-auth/form-for-auth.component'
 import { EmptyRouteComponent } from './empty-route/empty-route.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FormForAuthComponent,
     EmptyRouteComponent,
   ],
   imports: [

@@ -11,11 +11,15 @@ import { StorageServiceModule } from 'angular-webstorage-service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmptyRouteComponent } from './empty-route/empty-route.component';
+import { ListOfServicesComponent } from './list-of-services/list-of-services.component';
+import { MainContentComponent } from './main-content/main-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmptyRouteComponent,
+    ListOfServicesComponent,
+    MainContentComponent,
   ],
   imports: [
     BrowserModule,
