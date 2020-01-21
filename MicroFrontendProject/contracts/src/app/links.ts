@@ -11,6 +11,6 @@ export class Links {
     bsoIcon32 = assetUrl('bso_32.png')
     TaskIcon32 = assetUrl('Task_32.png')
   
-    linkHeader = 'http://localhost:3000/contracts/header'
+    linkHeader = 'http://localhost:3000/header'
     linkFooter = 'http://localhost:3000/contracts/footer'
 }

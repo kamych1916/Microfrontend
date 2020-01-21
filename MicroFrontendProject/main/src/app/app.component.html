@@ -1,116 +1,22 @@
-<main-primary-nav></main-primary-nav>
 <router-outlet></router-outlet>
-    <div class="row" >
-            <!-- <header-main id="header-main" style="width: 98%" (DataToMainForExit)="DataToMainForExit($event)" *axLazyElement="linkHeader"></header-main> -->
-        
-        
-        
-            <header-main img="../assets/Logo.png" style="width: 98%" (DataToMainForExit)="DataToMainForExit($event)" *axLazyElement="linkHeader"></header-main>
-
-
-
-            <!-- <img width="24" style="margin: 46px 0 0 -12px" height="24" src="http://localhost:3000/icons/exit" (click)="Exit()"> -->
-    </div>
+    <!-- START - ПОДКЛЮЧЕНИЕ ВЕБ-КОМПОНЕНТА -->
+    <header-wc [ImagesInContainerHeaderWC]="false" *axLazyElement="links.linkHeader"></header-wc>
+    <!--  END  - ПОДКЛЮЧЕНИЕ ВЕБ-КОМПОНЕНТА -->
 <div class="p-3">
-<div class="row">
-    <div class="col-2">
-        <div class="row">
-            <div style="width: 100%;height: 40vh; overflow-x:hidden; overflow-y:scroll; ">
-                <div class="row ml-3">
-                    <!-- <div class="col-"><img [src]="HomeIcon"></div> -->
-                    
-                    <!-- ПОДКЛЮЧЕНИЕ ИЗОБРАЖЕНИЙ ЧЕРЕЗ "DATA URI" -->
-                    <div class="col-"><img title="home" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAHlBMVEUAAADpp3TpqnrorYDns4zosIbmtpLluZflvJ71giwppki4AAAAAXRSTlMAQObYZgAAAIdJREFUKM+9kDEOwkAMBFdIQecn0PENnkCXJ/ANumvTGYFE5rcpzCUOTVJlK99oZN1a2hvzPwD54TLwFYCs4MbrkhQcrqekAG/ptihAL3WLAh9Jus8KPCTp3BTjG8Pzp0ANUEIxxrZswCWlTxto1cKIFhkgGzMYXKVmUGq0n0E7xxEgZSfYyATftViUw905hAAAAABJRU5ErkJggg==" alt="kekweb"></div>
-                    <!-- ПОДКЛЮЧЕНИЕ ИЗОБРАЖЕНИЙ ЧЕРЕЗ "DATA URI" -->
-                    
-                    
-                    <div class="col"><h4 style="font-weight: bold"><a href="">Главная</a></h4></div>
-                </div>
-                <div class="row ml-3">
-                    <div class="col-"><img [src]="CalcIcon32"></div>
-                    <div class="col"><h4><a href="">Калькулятор</a></h4></div>
-                </div>
-                <div class="row ml-3">
-                    <div class="col-"><img [src]="PoliciesIcon32"></div>
-                    <div class="col"><h4><a href="">Договоры</a></h4></div>
-                </div>
-                <div class="row ml-3">
-                    <div class="col-"><img [src]="ClientsIcon"></div>
-                    <div class="col"><h4><a href="">Клиенты</a></h4></div>
-                </div>
-                <div class="row ml-3">
-                    <div class="col-"><img [src]="PoliciesSupportIcon32"></div>
-                    <div class="col"><h4><a href="">Сервисы</a></h4></div>
-                </div>
-                <div class="row ml-3">
-                    <div class="col-"><img [src]="PoliciesSupportIcon32"></div>
-                    <div class="col"><h4><a href="">Сервисы v2</a></h4></div>
-                </div>
-                <div class="row ml-3">
-                    <div class="col-"><img [src]="PaymentsIcon32"></div>
-                    <div class="col"><h4><a href="">Платежи</a></h4></div>
-                </div>
-                <div class="row ml-3">
-                    <div class="col-"><img [src]="AgentsRegistryIcon32"></div>
-                    <div class="col"><h4><a href="">Журнал</a></h4></div>
-                </div>
-                <div class="row ml-3">
-                    <div class="col-"><img [src]="bsoIcon32"></div>
-                    <div class="col"><h4><a href="">БСО</a></h4></div>
-                </div>
-                <div class="row ml-3">
-                    <div class="col-"><img [src]="TaskIcon32"></div>
-                    <div class="col"><h4><a href="">Задачи</a></h4></div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <footer-main *axLazyElement="linkFooter"></footer-main>
-            <!-- <footer-main></footer-main> -->
-        </div>
-    </div>
-    
-    <div class="col pl-5">
-        <div class="row">
-            <div class="col- pr-2">
-                <!-- <img [src]="HomeIcon"> -->
+    <div class="row">
 
-                    <!-- ПОДКЛЮЧЕНИЕ ИЗОБРАЖЕНИЙ ЧЕРЕЗ "DATA URI" -->
-                    <img title="contracts" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAHlBMVEUAAADpp3TpqnrorYDns4zosIbmtpLluZflvJ71giwppki4AAAAAXRSTlMAQObYZgAAAIdJREFUKM+9kDEOwkAMBFdIQecn0PENnkCXJ/ANumvTGYFE5rcpzCUOTVJlK99oZN1a2hvzPwD54TLwFYCs4MbrkhQcrqekAG/ptihAL3WLAh9Jus8KPCTp3BTjG8Pzp0ANUEIxxrZswCWlTxto1cKIFhkgGzMYXKVmUGq0n0E7xxEgZSfYyATftViUw905hAAAAABJRU5ErkJggg==" >
-                    <!-- ПОДКЛЮЧЕНИЕ ИЗОБРАЖЕНИЙ ЧЕРЕЗ "DATA URI" -->
+        <!-- START - КОМПОНЕНТ СПИСОК СЕРВИСОВ (ЛЕВОЕ МЕНЮ) -->
+        <div class="col-2">
+            <main-list-of-services></main-list-of-services>
+        </div>
+        <!--  END  - КОМПОНЕНТ СПИСОК СЕРВИСОВ (ЛЕВОЕ МЕНЮ) -->
 
-                </div>
-            <div class="col-2">
-                <div class="row"><h4>Договоры</h4></div>
-                <div class="row">Работа с портфелем договоров</div>
-            </div>
+        
+        <!-- START - КОМПОНЕНТ ОСНОВНОЙ КОНТЕНТ СТРАНИЦЫ -->
+        <div class="col pl-5">
+            <main-main-content></main-main-content>
         </div>
-        <div class="row mt-4">
-            <!-- третья колонка в конце -->
-            <div class="col-3">
-                <div class="row mb-5">
-                    <div class="col- pr-3">
-                        <img [src]="PoliciesIcon64" >
-                        <!-- <img src="data:image/png;base64,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" > -->
-                    </div>
-                    <div class="col">
-                        <div class="row">
-                            <h4>
-                                <a href="">Договоры</a>
-                                <img class="pl-2" [src]="HelpIcon16">
-                            </h4>
-                        </div>
-                        <div class="row">
-                            <div>
-                                <h6><a routerLink="/contracts">Найти свой договор</a></h6>
-                                <h6>Оформить договор:</h6>
-                                <h6 class="ml-4"><a routerLink="/auto/contract">Каско ФЛ v2</a></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!--  END  - КОМПОНЕНТ ОСНОВНОЙ КОНТЕНТ СТРАНИЦЫ -->
+
     </div>
-</div>
 </div>

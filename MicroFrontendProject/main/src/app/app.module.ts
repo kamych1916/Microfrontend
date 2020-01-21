@@ -3,17 +3,21 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { LazyElementsModule } from '@angular-extensions/elements';
 
 import { StorageServiceModule} from 'angular-webstorage-service';
+import { AssetUrlPipe } from './images.pipe'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmptyRouteComponent } from './empty-route/empty-route.component';
-import { PrimaryNavComponent } from './primary-nav/primary-nav.component';
+import { ListOfServicesComponent } from './list-of-services/list-of-services.component';
+import { MainContentComponent } from './main-content/main-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmptyRouteComponent,
-    PrimaryNavComponent,
+    AssetUrlPipe,
+    ListOfServicesComponent,
+    MainContentComponent
   ],
   imports: [
     BrowserModule,

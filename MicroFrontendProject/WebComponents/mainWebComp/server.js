@@ -1,5 +1,17 @@
 const express = require('express');
 const server = express();
+server.get('/api/testrest', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
+    res.sendFile('public/test.png', { root : __dirname})
+});
+
+// START OF ---- HEADER WEB-COMP
+server.get('/header', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
+    res.sendFile('public/headerServer.js', { root : __dirname})
+});
+// END OF   ---- HEADER WEB-COMP
+
 
 // START OF ---- CONTRACTS WEB-COMP
 server.get('/contracts/footer', (req,res) => {
@@ -8,21 +20,14 @@ server.get('/contracts/footer', (req,res) => {
 });
 //  END OF  ---- CONTRACTS WEB-COMP
 
-server.get('/contracts/header', (req,res) => {
-    res.set('Cache-Control', 'public, max-age=31557600');
-    res.sendFile('public/headerContractsServer.js', { root : __dirname})
-});
 
 // START OF ---- MAIN WEB-COMP
-server.get('/main/header', (req,res) => {
-    res.set('Cache-Control', 'public, max-age=31557600');
-    res.sendFile('public/headerMainServer.js', { root : __dirname})
-});
 server.get('/main/footer', (req,res) => {
     res.set('Cache-Control', 'public, max-age=31557600');
     res.sendFile('public/footerMainServer.js', { root : __dirname})
 });
 //  END OF  ---- MAIN WEB -COMP
+
 
 // START OF ---- AUTH WEB-COMP
 server.get('/auth/header', (req,res) => {
@@ -37,11 +42,6 @@ server.get('/auth/footer', (req,res) => {
 
 
 // START OF ---- AUTOCONTRACT WEB-COMP
-
-server.get('/autocontract/header', (req,res) => {
-    res.set('Cache-Control', 'public, max-age=31557600');
-    res.sendFile('public/headerAutoContractServer.js', { root : __dirname})
-});
 
 server.get('/autocontract/footer', (req,res) => {
     res.set('Cache-Control', 'public, max-age=31557600');

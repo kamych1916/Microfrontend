@@ -1,4 +1,4 @@
-import { Component  } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SessionStorageService } from './sessionstorageservice'
 
 @Component({
@@ -7,7 +7,13 @@ import { SessionStorageService } from './sessionstorageservice'
 })
 export class AppComponent{
 
-  constructor(private sessionStorageService: SessionStorageService ) { }
+  NameOfUser: any
+
+  constructor(private sessionStorageService: SessionStorageService ) {
+    this.NameOfUser = this.sessionStorageService.local_storage.get('login')
+  }
+  
+  @Input() ImagesInContainerHeaderWC: any
 
   SubmitForExit(){
       this.sessionStorageService.storage.remove('token');

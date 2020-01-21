@@ -23,8 +23,8 @@ function createToken(payload){
 }
 
 // Check if the user exists in database
-function isAuthenticated({email, password}){
-  return userdb.users.findIndex(user => user.email === email && user.password === password) !== -1
+function isAuthenticated({login, password}){
+  return userdb.users.findIndex(user => user.login === login && user.password === password) !== -1
 }
 
 function isUserExist({name, surname, patronymic}){
@@ -45,7 +45,7 @@ server.post('/auth/login', (req, res) => {
     const status = 401
     const message = 'Incorrect email or password'
     res.status(status).json({status, message})
-    return
+    return res.status(401)
   }
   const access_token = createToken({login, password})
   res.status(200).json({access_token, login})

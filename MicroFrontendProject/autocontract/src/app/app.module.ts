@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { ElModule } from 'element-angular'
+// import { ElModule } from 'element-angular'
+// import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LazyElementsModule } from '@angular-extensions/elements';
 
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
@@ -30,7 +31,8 @@ import { MainContentComponent } from './main-content/main-content.component';
     AppRoutingModule,
     HttpModule,
     HttpClientModule,
-    ElModule.forRoot(),
+    // ElModule.forRoot(),
+    // LoadingBarModule.forRoot(),
     FormsModule,
     StorageServiceModule,
     LazyElementsModule,

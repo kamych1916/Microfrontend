@@ -29,8 +29,8 @@ export class AppModule implements DoBootstrap {
 
   ngDoBootstrap() {
     const el = createCustomElement(AppComponent, { injector: this.injector });
-      if(customElements.get('header-contracts') == undefined || null){
-        customElements.define('header-contracts', el)
+      if(customElements.get('header-wc') == undefined || null){
+        customElements.define('header-wc', el)
       }else{}
   }
 }

@@ -24,8 +24,8 @@ export class AppModule implements DoBootstrap {
   constructor(private injector: Injector) {}
   ngDoBootstrap() {
     const el = createCustomElement(AppComponent, { injector: this.injector });
-      if(customElements.get('footer-contracts') == undefined || null){
-        customElements.define('footer-contracts', el)
+      if(customElements.get('footer-main') == undefined || null){
+        customElements.define('footer-main', el)
       }else{}
   }
 }
