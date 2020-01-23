@@ -7,14 +7,14 @@
   <div [ngStyle]="{display: visibilityMainBtnSnd1}" nz-col  nzSpan="2">
     <input nz-button nzType="default" [(ngModel)]="Result" style="width: 100%; border: 1px solid #ccc; cursor: default">
   </div>
-  <div [ngStyle]="{display: visibilityMainBtnSnd2}" nz-col nzSpan="2">
+  <div [ngStyle]="{display: visibilityMainBtnSnd2}" nz-col nzSpan="3">
     <input nz-button nzType="default"  [disabled]="true"  [(ngModel)]="ResultRegister" style=" width: 100%; border: 1px solid #ccc; cursor: default">
   </div>
   <div nz-col  nzSpan="1">
-    <button [ngStyle]="{display: visibilityMainBtnSnd3}" style="cursor: default; margin: 0 0 0 20px; background-color: #f5822c; color: white" nz-button nzType="default" (click)="changeBtnInvers()" >Удалить</button>
+    <button [ngStyle]="{display: visibilityMainBtnSnd3}" style="cursor: default; margin: 0 0 0 70px; background-color: #f5822c; color: white" nz-button nzType="default" (click)="changeBtnInvers()" >Удалить</button>
   </div>
   <div nz-col  nzSpan="1">
-    <button [ngStyle]="{display: visibilityMainBtnSnd3}" style="cursor: default; margin: 0 0 0 30px; background-color: #f5822c; color: white" nz-button nzType="default" (click)="showModal2()" >Создать</button>
+    <button [ngStyle]="{display: visibilityMainBtnSnd3}" style="cursor: default; margin: 0 0 0 140px; background-color: #f5822c; color: white" nz-button nzType="default" (click)="showModal2()" >Создать</button>
   </div>
 </div>
 <nz-modal
@@ -37,7 +37,7 @@
                 <input nz-input nzSize="large" [(ngModel)]="user.Surname" />
                 <br />
                 <br />
-                <span>Отчество (клицей)</span><br>
+                <span>Отчество (кириллицей)</span><br>
                 <input nz-input nzSize="large" [(ngModel)]="user.Patronymic" />
                 <br />
                 <br />

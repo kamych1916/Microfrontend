@@ -18,19 +18,27 @@ export class MainContentComponent {
 
   receivedData: dataContracts; // полученные данные
   invisibleInp = "hidden"
+  required: any
   search(contract: dataContracts ){
+    if(contract.nameclient == undefined && contract.namecontract == undefined){
+      this.required = 'данное поле является обязательным!'
+    }else{
     this.httpService.postDataContract(contract)
             .subscribe(
-              (data: dataContracts) => {this.receivedData=data; this.done=true, this.ResultNameContract = this.receivedData.namecontract, this.ResultNameClient = this.receivedData.nameclient, this.invisibleInp = "visible"},
-              error => {alert('Договор не найден!')}
+              (data: dataContracts) => {this.receivedData=data; this.required = '', this.done=true, this.ResultNameContract = this.receivedData.namecontract, this.ResultNameClient = this.receivedData.nameclient, this.ResultNameCar = this.receivedData.namecar,this.ResultCostCar = this.receivedData.costcar, this.invisibleInp = "visible"},
+              error => {alert('Договор не найден!'), this.required = 'данное поле является обязательным!'}
             );
+    }
   };
 
   // ОТПРАВКА ДАННЫХ ПО ПАРАМЕТРУ В ССЫЛКЕ 
   ResultNameContract: any
   ResultNameClient: any
+  ResultNameCar: any
+  ResultCostCar: any
   postParamData(){
-    this.router.navigate(['/auto/contract'], {queryParams: {ncontr: this.ResultNameContract, nclient: this.ResultNameClient}})
+    console.log(this.ResultCostCar, this.ResultNameCar)
+    this.router.navigate(['/auto/contract'], {queryParams: {ncontr: this.ResultNameContract, nclient: this.ResultNameClient, ncar: this.ResultNameCar, ccost: this.ResultCostCar}})
   }
 
 }

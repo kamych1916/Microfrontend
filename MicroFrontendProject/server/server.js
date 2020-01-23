@@ -36,6 +36,7 @@ function isConractExist({namecontract, nameclient}){
   return constractsDB.contracts.findIndex(contract => contract.namecontract === namecontract && contract.nameclient === nameclient) !== -1
 }
 
+
 //АВТОРИЗАЦИЯ ДЛЯ СИСТЕМЫ 
 server.post('/auth/login', (req, res) => {
   console.log("login endpoint called; request body:");
@@ -164,6 +165,7 @@ server.post('/search/user', (req, res) => {
     res.status(status).json({status, message})
     return
   }
+
   const FullName = surname + " " + name + " " + patronymic
   res.status(200).json({FullName})
 })
@@ -172,6 +174,7 @@ server.post('/search/user', (req, res) => {
 server.post('/search/contract', (req, res) => {
   console.log("login endpoint called; request body:");
   console.log(req.body);
+
   const {namecontract, nameclient} = req.body;
   if (isConractExist({namecontract, nameclient}) === false) {
     const status = 401
@@ -179,8 +182,16 @@ server.post('/search/contract', (req, res) => {
     res.status(status).json({status, message})
     return
   }
+
+  for (var key in constractsDB.contracts) {
+    var item = constractsDB.contracts[key];
+    if(namecontract == item.namecontract & nameclient == item.nameclient){
+      costcar = item.namecar
+      namecar = item.costcar
+    }
+  }
   const FullNameContract = "Наименование контракта: " + namecontract + ", Страхователь: " + nameclient
-  res.status(200).json({FullNameContract, namecontract, nameclient})
+  res.status(200).json({FullNameContract, namecontract, nameclient, costcar, namecar})
 })
 
 

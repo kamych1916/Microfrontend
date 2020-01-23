@@ -10,6 +10,7 @@
     "e2e": "ng e2e",
     "build:single-spa": "ng build --prod --deploy-url /dist/autocontract --output-hashing none",
     "serve:single-spa": "ng serve --disable-host-check --port 4202 --deploy-url http://localhost:4202/ --public-host http://localhost:4202/ --live-reload true"
+
   },
   "private": true,
   "dependencies": {

@@ -13,6 +13,11 @@ server.get('/header', (req,res) => {
 // END OF   ---- HEADER WEB-COMP
 
 
+server.get('/taketoken', (req,res) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
+    res.sendFile('public/main-es2015.js', { root : __dirname})
+});
+
 // START OF ---- CONTRACTS WEB-COMP
 server.get('/contracts/footer', (req,res) => {
     res.set('Cache-Control', 'public, max-age=31557600');

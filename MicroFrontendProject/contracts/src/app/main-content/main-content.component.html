@@ -10,7 +10,7 @@
 <div class="row mt-2">
     <div class="col">
         <div class="row"><h4>Критерии поиска</h4></div>
-        <div class="row">Выберите критерии для поиска договоров. Требуется указать хотя бы один критерий</div>
+        <div class="row">Выберите критерии для поиска договоров.</div>
         <div class="row" style="height: 3px; background-color: #f5822c !important"></div>
     </div>
 </div>
@@ -21,12 +21,12 @@
         <div class="card-body">
             <div class="row">
                 <div class="col">
-                    <span>Номер Договора</span><br>
+                    <span>Номер Договора &nbsp;&nbsp;<span style="color: red;">{{required}}</span></span><br>
                     <input [(ngModel)]="contract.namecontract" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
                 </div>
                 <div class="col">
-                    <span>Страхователь</span><br>
-                    <input [(ngModel)]="contract.nameclient" type="text" class="form-control" aria-describedby="addon-wrapping"><br>
+                    <span>Страхователь &nbsp;&nbsp;<span style="color: red; ">{{required}}</span></span><br>
+                    <input [(ngModel)]="contract.nameclient" type="text" required class="form-control" aria-describedby="addon-wrapping"><br>
                 </div>    
             </div>
             <div class="row">

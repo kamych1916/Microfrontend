@@ -27,6 +27,8 @@ export class MainContentComponent implements OnInit {
   sub: any  
   paramDataContr: any
   paramDataClient: any
+  paramDataCar: any
+  paramDataCCost: any
   ngOnInit() {
     this.sub = this.router
     .queryParams
@@ -35,6 +37,10 @@ export class MainContentComponent implements OnInit {
       this.paramDataContr = params['ncontr']
       console.log(params['nclient'])
       this.paramDataClient = params['nclient']
+      console.log(params['ncar'])
+      this.paramDataCar = params['ncar']
+      console.log(params['ccost'])
+      this.paramDataCCost = params['ccost']
     });
     // Неработает пока что! Пытался связать через события микро прил. и веб-комп. Если в параметрах имеется клиент, то поле веб-комп. должно изменится.
     // const event: CustomEvent<any> = new CustomEvent('connect-for-input-clientname-from-params', this.paramDataClient);
